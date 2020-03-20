@@ -7,7 +7,7 @@ const WebBreadcrumb = props => {
     return (
         <Breadcrumb style={{ marginBottom: 16 }}>
             <Breadcrumb.Item>
-                <Link to='/index'>首页</Link>
+                <Link to='/index' replace>首页</Link>
             </Breadcrumb.Item>
             {props.arr &&
                 props.arr.map(res => {
