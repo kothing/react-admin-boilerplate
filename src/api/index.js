@@ -1,12 +1,12 @@
 import axios from 'axios';
 
-import { BASERUL } from '@/api/config'
+import { BASEURL } from '@/api/config'
 
 // 这里取决于登录的时候将 token 存储在哪里
 const token = localStorage.getItem('token');
 
 const request = axios.create({
-    baseURL: BASERUL,
+    baseURL: BASEURL,
     timeout: 5000
 })
 
