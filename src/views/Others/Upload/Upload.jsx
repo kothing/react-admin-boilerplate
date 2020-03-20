@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
-import { Layout, Row, Col, Upload, message, Button, Icon, Divider, Modal } from 'antd'
-import WebBreadcrumb from '@/components/WebBreadcrumb'
+import React, { useState } from 'react';
+import { Layout, Row, Col, Upload, message, Button, Divider, Modal } from 'antd';
+import { PlusOutlined, UploadOutlined, InboxOutlined, LoadingOutlined } from '@ant-design/icons';
+import WebBreadcrumb from '@/components/WebBreadcrumb';
 
 const { Dragger } = Upload
 
@@ -93,7 +94,7 @@ const UploadView = () => {
     let { previewVisible, previewImage, fileList } = state
 
     const handleChange = info => {
-        getBase64(info.file.originFileObj, imageUrl => {
+        getBase64(info.file.originFileObj || info.file, imageUrl => {
             setimageUrl(() => {
                 if (info.file.status === 'done') {
                     return imageUrl
@@ -123,7 +124,7 @@ const UploadView = () => {
 
     const uploadButton = (
         <div>
-            <Icon type={loading ? 'loading' : 'plus'} />
+            {loading ? <LoadingOutlined /> : <PlusOutlined />}
             <div className='ant-upload-text'>Upload</div>
         </div>
     )
@@ -142,7 +143,7 @@ const UploadView = () => {
                         <Divider orientation='left'>普通模式</Divider>
                         <Upload {...props}>
                             <Button>
-                                <Icon type='upload' /> Click to Upload
+                                <UploadOutlined /> Click to Upload
                             </Button>
                         </Upload>
                     </div>
@@ -181,7 +182,7 @@ const UploadView = () => {
                         <Divider orientation='left'>可拖拽上传</Divider>
                         <Dragger {...props}>
                             <p className='ant-upload-drag-icon'>
-                                <Icon type='inbox' />
+                                <InboxOutlined />
                             </p>
                             <p className='ant-upload-text'>Click or drag file to this area to upload</p>
                             <p className='ant-upload-hint'>
@@ -196,4 +197,4 @@ const UploadView = () => {
     )
 }
 
-export default UploadView
+export default UploadView;
