@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
-import { Layout, Divider, Row, Col, Icon, Menu, Button, Switch } from 'antd'
-import WebBreadcrumb from '@/components/WebBreadcrumb'
+import React, { useState } from 'react';
+import { Layout, Divider, Row, Col, Menu, Button, Switch } from 'antd';
+import { AppstoreOutlined, MailOutlined, SettingOutlined, MenuFoldOutlined, MenuUnfoldOutlined, PieChartOutlined, DesktopOutlined, InboxOutlined, CalendarOutlined } from '@ant-design/icons';
+import WebBreadcrumb from '@/components/WebBreadcrumb';
 
 const { SubMenu } = Menu
 
@@ -42,22 +43,22 @@ const MenuView = () => {
                 </p>
             </div>
             <Row gutter={8}>
-                <Col>
+                <Col span={24}>
                     <div className='base-style'>
                         <Divider orientation='left'>顶部导航</Divider>
                         <Menu onClick={handleClick} selectedKeys={[current]} mode='horizontal'>
                             <Menu.Item key='mail'>
-                                <Icon type='mail' />
+                                <MailOutlined />
                                 Navigation One
                             </Menu.Item>
                             <Menu.Item key='app' disabled>
-                                <Icon type='appstore' />
+                                <AppstoreOutlined />
                                 Navigation Two
                             </Menu.Item>
                             <SubMenu
                                 title={
                                     <span className='submenu-title-wrapper'>
-                                        <Icon type='setting' />
+                                        <SettingOutlined />
                                         Navigation Three - Submenu
                                     </span>
                                 }>
@@ -89,7 +90,7 @@ const MenuView = () => {
                                 key='sub1'
                                 title={
                                     <span>
-                                        <Icon type='mail' />
+                                        <MailOutlined />
                                         <span>Navigation One</span>
                                     </span>
                                 }>
@@ -106,7 +107,7 @@ const MenuView = () => {
                                 key='sub2'
                                 title={
                                     <span>
-                                        <Icon type='appstore' />
+                                        <AppstoreOutlined />
                                         <span>Navigation Two</span>
                                     </span>
                                 }>
@@ -121,7 +122,7 @@ const MenuView = () => {
                                 key='sub4'
                                 title={
                                     <span>
-                                        <Icon type='setting' />
+                                        <SettingOutlined />
                                         <span>Navigation Three</span>
                                     </span>
                                 }>
@@ -132,7 +133,6 @@ const MenuView = () => {
                             </SubMenu>
                         </Menu>
                     </div>
-
                     <div className='base-style'>
                         <Divider>只展开当前父级菜单</Divider>
                         <Menu mode='inline' openKeys={openKeys} onOpenChange={onOpenChange} style={{ width: 256 }}>
@@ -140,7 +140,7 @@ const MenuView = () => {
                                 key='sub1'
                                 title={
                                     <span>
-                                        <Icon type='mail' />
+                                        <MailOutlined />
                                         <span>Navigation One</span>
                                     </span>
                                 }>
@@ -153,7 +153,7 @@ const MenuView = () => {
                                 key='sub2'
                                 title={
                                     <span>
-                                        <Icon type='appstore' />
+                                        <AppstoreOutlined />
                                         <span>Navigation Two</span>
                                     </span>
                                 }>
@@ -168,7 +168,7 @@ const MenuView = () => {
                                 key='sub4'
                                 title={
                                     <span>
-                                        <Icon type='setting' />
+                                        <SettingOutlined />
                                         <span>Navigation Three</span>
                                     </span>
                                 }>
@@ -188,7 +188,7 @@ const MenuView = () => {
                                 type='primary'
                                 onClick={() => setCollapsed(!collapsed)}
                                 style={{ marginBottom: 16 }}>
-                                <Icon type={collapsed ? 'menu-unfold' : 'menu-fold'} />
+                                {collapsed ? <MenuFoldOutlined /> : <MenuUnfoldOutlined />}
                             </Button>
                             <Menu
                                 defaultSelectedKeys={['1']}
@@ -197,22 +197,22 @@ const MenuView = () => {
                                 theme='dark'
                                 inlineCollapsed={collapsed}>
                                 <Menu.Item key='1'>
-                                    <Icon type='pie-chart' />
+                                    <PieChartOutlined />
                                     <span>Option 1</span>
                                 </Menu.Item>
                                 <Menu.Item key='2'>
-                                    <Icon type='desktop' />
+                                    <DesktopOutlined />
                                     <span>Option 2</span>
                                 </Menu.Item>
                                 <Menu.Item key='3'>
-                                    <Icon type='inbox' />
+                                    <InboxOutlined />
                                     <span>Option 3</span>
                                 </Menu.Item>
                                 <SubMenu
                                     key='sub1'
                                     title={
                                         <span>
-                                            <Icon type='mail' />
+                                            <MailOutlined />
                                             <span>Navigation One</span>
                                         </span>
                                     }>
@@ -225,7 +225,7 @@ const MenuView = () => {
                                     key='sub2'
                                     title={
                                         <span>
-                                            <Icon type='appstore' />
+                                            <AppstoreOutlined />
                                             <span>Navigation Two</span>
                                         </span>
                                     }>
@@ -255,18 +255,18 @@ const MenuView = () => {
                                 mode={mode}
                                 theme={theme}>
                                 <Menu.Item key='1'>
-                                    <Icon type='mail' />
+                                    <MailOutlined />
                                     Navigation One
                                 </Menu.Item>
                                 <Menu.Item key='2'>
-                                    <Icon type='calendar' />
+                                    <CalendarOutlined />
                                     Navigation Two
                                 </Menu.Item>
                                 <SubMenu
                                     key='sub1'
                                     title={
                                         <span>
-                                            <Icon type='appstore' />
+                                            <AppstoreOutlined />
                                             <span>Navigation Three</span>
                                         </span>
                                     }>
@@ -281,7 +281,7 @@ const MenuView = () => {
                                     key='sub2'
                                     title={
                                         <span>
-                                            <Icon type='setting' />
+                                            <SettingOutlined />
                                             <span>Navigation Four</span>
                                         </span>
                                     }>
@@ -299,4 +299,4 @@ const MenuView = () => {
     )
 }
 
-export default MenuView
+export default MenuView;
