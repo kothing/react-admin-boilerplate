@@ -1,7 +1,4 @@
 
-/*
- * API管理工具 http://rap2.taobao.org/
- */
-export const API = 'http://rap2api.taobao.org/app/mock/238611'
+export const API = '';
 
-export const URLAPI = ''
+export const BASEURL = 'http://localhost:3001';
