@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
-import WebBreadcrumb from '@/components/WebBreadcrumb'
-import { Layout, Divider, Row, Col, Tabs, Select, Icon, Radio, Button } from 'antd'
+import React, { useState } from 'react';
+import WebBreadcrumb from '@/components/WebBreadcrumb';
+import { Layout, Divider, Row, Col, Tabs, Select, Radio, Button } from 'antd';
+import { AndroidOutlined } from '@ant-design/icons';;
 
 const { TabPane } = Tabs
 const { Option } = Select
@@ -51,7 +52,7 @@ const TabsViews = () => {
     return (
         <Layout className='animated fadeIn'>
             <div>
-                <WebBreadcrumb arr={['展示', '标签页']}></WebBreadcrumb>
+                <WebBreadcrumb arr={['展示', '选项卡']}></WebBreadcrumb>
             </div>
             <div className='base-style'>
                 <h3>何时使用</h3>
@@ -112,7 +113,8 @@ const TabsViews = () => {
                                 <Select
                                     value={tabPosition}
                                     onChange={tabPosition => setTabPosition(tabPosition)}
-                                    dropdownMatchSelectWidth={false}>
+                                    dropdownMatchSelectWidth={false}
+                                >
                                     <Option value='top'>top</Option>
                                     <Option value='bottom'>bottom</Option>
                                     <Option value='left'>left</Option>
@@ -126,7 +128,7 @@ const TabsViews = () => {
                                 <TabPane
                                     tab={
                                         <span>
-                                            <Icon type='android' />
+                                            <AndroidOutlined />
                                             Tab 2
                                         </span>
                                     }
@@ -165,4 +167,4 @@ const TabsViews = () => {
     )
 }
 
-export default TabsViews
+export default TabsViews;
