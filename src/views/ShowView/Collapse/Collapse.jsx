@@ -1,6 +1,7 @@
-import React from 'react'
+import React from 'react';
 import WebBreadcrumb from '@/components/WebBreadcrumb'
-import { Layout, Divider, Row, Col, Collapse, Icon } from 'antd'
+import { Layout, Divider, Row, Col, Collapse } from 'antd';
+import { CaretRightOutlined } from '@ant-design/icons';
 
 const { Panel } = Collapse
 
@@ -35,7 +36,7 @@ const CollapseView = () => {
                 <p>手风琴 是一种特殊的折叠面板，只允许单个内容区域展开。</p>
             </div>
             <Row>
-                <Col>
+                <Col span={24}>
                     <div className='base-style'>
                         <Divider orientation='left'>简单使用</Divider>
                         <Collapse defaultActiveKey={['1']} onChange={callback}>
@@ -52,7 +53,7 @@ const CollapseView = () => {
                         ,
                     </div>
                 </Col>
-                <Col>
+                <Col span={24}>
                     <div className='base-style'>
                         <Divider orientation='left'>手风琴</Divider>
                         <Collapse accordion>
@@ -68,14 +69,14 @@ const CollapseView = () => {
                         </Collapse>
                     </div>
                 </Col>
-                <Col>
+                <Col span={24}>
                     <div className='base-style'>
                         <Divider orientation='left'>自定义样式功能</Divider>
                         <Collapse
                             onChange={callback}
                             bordered={false}
                             defaultActiveKey={['1']}
-                            expandIcon={({ isActive }) => <Icon type='caret-right' rotate={isActive ? 90 : 0} />}>
+                            expandIcon={({ isActive }) => <CaretRightOutlined rotate={isActive ? 90 : 0} />}>
                             <Panel header='This is panel header 1' key='1' style={customPanelStyle}>
                                 <Collapse defaultActiveKey='1'>
                                     <Panel header='This is panel nest panel' key='1'>
@@ -97,4 +98,4 @@ const CollapseView = () => {
     )
 }
 
-export default CollapseView
+export default CollapseView;
