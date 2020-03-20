@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
-import { Layout, Divider, Row, Col, Steps, Icon, Button, message } from 'antd'
-import WebBreadcrumb from '@/components/WebBreadcrumb'
-import '@/style/view-style/step.scss'
+import React, { useState } from 'react';
+import { Layout, Divider, Row, Col, Steps, Button, message } from 'antd';
+import { UserOutlined, SolutionOutlined, LoadingOutlined, SmileOutlined } from '@ant-design/icons';
+import WebBreadcrumb from '@/components/WebBreadcrumb';
+import '@/style/view-style/step.scss';
 
 const { Step } = Steps
 
@@ -54,7 +55,7 @@ const StepView = () => {
                 </Col>
             </Row>
             <Row>
-                <Col>
+                <Col span={24}>
                     <div className='base-style'>
                         <Steps current={1}>
                             <Step title='Finished' description='This is a description.' />
@@ -63,7 +64,7 @@ const StepView = () => {
                         </Steps>
                     </div>
                 </Col>
-                <Col>
+                <Col span={24}>
                     <div className='base-style'>
                         <Steps size='small' current={1}>
                             <Step title='Finished' />
@@ -72,17 +73,17 @@ const StepView = () => {
                         </Steps>
                     </div>
                 </Col>
-                <Col>
+                <Col span={24}>
                     <div className='base-style'>
                         <Steps>
-                            <Step status='finish' title='Login' icon={<Icon type='user' />} />
-                            <Step status='finish' title='Verification' icon={<Icon type='solution' />} />
-                            <Step status='process' title='Pay' icon={<Icon type='loading' />} />
-                            <Step status='wait' title='Done' icon={<Icon type='smile-o' />} />
+                            <Step status='finish' title='Login' icon={<UserOutlined />} />
+                            <Step status='finish' title='Verification' icon={<SolutionOutlined />} />
+                            <Step status='process' title='Pay' icon={<LoadingOutlined />} />
+                            <Step status='wait' title='Done' icon={<SmileOutlined />} />
                         </Steps>
                     </div>
                 </Col>
-                <Col>
+                <Col span={24}>
                     <div className='base-style'>
                         <div>
                             <Steps current={current} onChange={current => setCurrent(current)}>
@@ -111,7 +112,7 @@ const StepView = () => {
                         </div>
                     </div>
                 </Col>
-                <Col>
+                <Col span={24}>
                     <div className='base-style'>
                         <Steps current={1} status='error'>
                             <Step title='Finished' description='This is a description' />
@@ -125,4 +126,4 @@ const StepView = () => {
     )
 }
 
-export default StepView
+export default StepView;
