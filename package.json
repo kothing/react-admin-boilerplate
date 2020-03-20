@@ -9,10 +9,13 @@
         "braft-editor": "^2.3.8",
         "echarts": "^4.4.0",
         "eslint-plugin-react-hooks": "^2.3.0",
-        "react": "^16.10.1",
-        "react-dom": "^16.10.1",
+        "less": "^3.11.1",
+        "less-loader": "^5.0.0",
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1",
         "react-router-dom": "^5.1.1",
         "react-scripts": "^3.2.0",
+        "react-app-rewired": "^2.1.5",
         "screenfull": "^5.0.0"
     },
     "devDependencies": {
@@ -28,8 +31,7 @@
         "lint-staged": "^9.4.2",
         "node-sass": "^4.13.0",
         "nodemon": "^2.0.2",
-        "prettier": "^1.18.2",
-        "react-app-rewired": "^2.1.4"
+        "prettier": "^1.18.2"
     },
     "scripts": {
         "server": "nodemon --watch ./__mocks__/server ./__mocks__/server/index.js",
