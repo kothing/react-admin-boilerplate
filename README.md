@@ -6,7 +6,7 @@
 * braft-editor
 * echarts
 
-Demo https://react-admin.kothing.now.sh/
+Demo https://kothing-react-admin.now.sh/
 
 React-admin screenshot
 ![react-admin](https://raw.githubusercontent.com/kothing/react-admin/master/screenshot.jpg "可选标题")
