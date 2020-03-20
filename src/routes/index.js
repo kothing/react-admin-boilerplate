@@ -1,34 +1,34 @@
-import loadable from '@/utils/loadable'
+import AsyncLoadable from '@/utils/AsyncLoadable';
 
-const Index = loadable(() => import(/* webpackChunkName: 'index' */ '@/views/Index'))
+const Index = AsyncLoadable(() => import(/* webpackChunkName: 'index' */ '@/views/Index'))
 
 // 通用
-const ButtonView = loadable(() => import(/* webpackChunkName: 'button' */ '@/views/PublicView/Button'))
-const IconView = loadable(() => import(/* webpackChunkName: 'icon' */ '@/views/PublicView/Icon'))
+const ButtonView = AsyncLoadable(() => import(/* webpackChunkName: 'button' */ '@/views/PublicView/Button'))
+const IconView = AsyncLoadable(() => import(/* webpackChunkName: 'icon' */ '@/views/PublicView/Icon'))
 
 // 导航
-const DropdownView = loadable(() => import(/* webpackChunkName: 'dropdown' */ '@/views/NavView/Dropdown'))
-const MenuView = loadable(() => import(/* webpackChunkName: 'menu' */ '@/views/NavView/Menu'))
-const StepView = loadable(() => import(/* webpackChunkName: 'step' */ '@/views/NavView/Step'))
+const DropdownView = AsyncLoadable(() => import(/* webpackChunkName: 'dropdown' */ '@/views/NavView/Dropdown'))
+const MenuView = AsyncLoadable(() => import(/* webpackChunkName: 'menu' */ '@/views/NavView/Menu'))
+const StepView = AsyncLoadable(() => import(/* webpackChunkName: 'step' */ '@/views/NavView/Step'))
 
 // 表单
-const FormBaseView = loadable(() => import(/* webpackChunkName: 'formBase' */ '@/views/FormView/FormBaseView'))
-const FormStepView = loadable(() => import(/* webpackChunkName: 'formStep' */ '@/views/FormView/FormStepView'))
+const FormBaseView = AsyncLoadable(() => import(/* webpackChunkName: 'formBase' */ '@/views/FormView/FormBaseView'))
+const FormStepView = AsyncLoadable(() => import(/* webpackChunkName: 'formStep' */ '@/views/FormView/FormStepView'))
 
 // 展示
-const TableView = loadable(() => import(/* webpackChunkName: 'table' */ '@/views/ShowView/Table'))
-const CollapseView = loadable(() => import(/* webpackChunkName: 'collapse' */ '@/views/ShowView/Collapse'))
-const TreeView = loadable(() => import(/* webpackChunkName: 'tree' */ '@/views/ShowView/Tree'))
-const TabsView = loadable(() => import(/* webpackChunkName: 'tabs' */ '@/views/ShowView/Tabs'))
+const TableView = AsyncLoadable(() => import(/* webpackChunkName: 'table' */ '@/views/ShowView/Table'))
+const CollapseView = AsyncLoadable(() => import(/* webpackChunkName: 'collapse' */ '@/views/ShowView/Collapse'))
+const TreeView = AsyncLoadable(() => import(/* webpackChunkName: 'tree' */ '@/views/ShowView/Tree'))
+const TabsView = AsyncLoadable(() => import(/* webpackChunkName: 'tabs' */ '@/views/ShowView/Tabs'))
 
 // 其它
-const ProgressView = loadable(() => import(/* webpackChunkName: 'progress' */ '@/views/Others/Progress'))
-const AnimationView = loadable(() => import(/* webpackChunkName: 'animation' */ '@/views/Others/Animation'))
-const EditorView = loadable(() => import(/* webpackChunkName: 'editor' */ '@/views/Others/Editor'))
-const UploadView = loadable(() => import(/* webpackChunkName: 'upload' */ '@/views/Others/Upload'))
+const ProgressView = AsyncLoadable(() => import(/* webpackChunkName: 'progress' */ '@/views/Others/Progress'))
+const AnimationView = AsyncLoadable(() => import(/* webpackChunkName: 'animation' */ '@/views/Others/Animation'))
+const EditorView = AsyncLoadable(() => import(/* webpackChunkName: 'editor' */ '@/views/Others/Editor'))
+const UploadView = AsyncLoadable(() => import(/* webpackChunkName: 'upload' */ '@/views/Others/Upload'))
 
-const Three = loadable(() => import(/* webpackChunkName: 'three' */ '@/views/TestView'))
-const About = loadable(() => import(/* webpackChunkName: 'about' */ '@/views/About'))
+const Three = AsyncLoadable(() => import(/* webpackChunkName: 'three' */ '@/views/TestView'))
+const About = AsyncLoadable(() => import(/* webpackChunkName: 'about' */ '@/views/About'))
 
 const routes = [
     { path: '/index', exact: true, name: 'Index', component: Index, auth: [1] },
@@ -42,7 +42,7 @@ const routes = [
     { path: '/show/table', exact: false, name: '表格', component: TableView },
     { path: '/show/collapse', exact: false, name: '折叠面板', component: CollapseView },
     { path: '/show/tree', exact: false, name: '树形控件', component: TreeView },
-    { path: '/show/tabs', exact: false, name: '标签页', component: TabsView },
+    { path: '/show/tabs', exact: false, name: '选项卡', component: TabsView },
     { path: '/others/progress', exact: false, name: '进度条', component: ProgressView, auth: [1] },
     { path: '/others/animation', exact: false, name: '动画', component: AnimationView, auth: [1] },
     { path: '/others/editor', exact: false, name: '富文本', component: EditorView, auth: [1] },
@@ -51,4 +51,4 @@ const routes = [
     { path: '/about', exact: false, name: '关于', component: About, auth: [1] }
 ]
 
-export default routes
+export default routes;
