@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import PropTypes from 'prop-types'
-import { Menu, Icon } from 'antd'
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { Menu } from 'antd';
 import { Link, withRouter } from 'react-router-dom'
 
 // 处理 pathname
@@ -34,7 +34,7 @@ const SideMenu = props => {
                 openKeys: getOpenKeys(pathname)
             }
         })
-    }, [props])
+    }, [props]);
 
     // 只展开一个 SubMenu
     const onOpenChange = openKeys => {
@@ -55,8 +55,8 @@ const SideMenu = props => {
 
     const renderMenuItem = ({ key, icon, title }) => (
         <Menu.Item key={key}>
-            <Link to={key}>
-                {icon && <Icon type={icon} />}
+            <Link to={key} replace>
+                {icon}
                 <span>{title}</span>
             </Link>
         </Menu.Item>
@@ -69,7 +69,7 @@ const SideMenu = props => {
                 key={key}
                 title={
                     <span>
-                        {icon && <Icon type={icon} />}
+                        {icon}
                         <span>{title}</span>
                     </span>
                 }>
