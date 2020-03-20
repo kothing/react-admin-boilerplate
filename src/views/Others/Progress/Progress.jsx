@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import WebBreadcrumb from '@/components/WebBreadcrumb'
-import { Layout, Row, Col, Progress, Divider, Button } from 'antd'
+import { Layout, Row, Col, Progress, Divider, Button } from 'antd';
+import { PlusOutlined, MinusOutlined } from '@ant-design/icons';
 import '@/style/view-style/progress.scss'
 
 const ButtonGroup = Button.Group
@@ -33,11 +34,11 @@ const DrawerView = () => {
                         <ButtonGroup>
                             <Button
                                 onClick={() => setPercent(percent => (percent < 0 ? 0 : percent - 10))}
-                                icon='minus'
+                                icon={<MinusOutlined />}
                             />
                             <Button
                                 onClick={() => setPercent(percent => (percent > 100 ? 100 : percent + 10))}
-                                icon='plus'
+                                icon={<PlusOutlined />}
                             />
                         </ButtonGroup>
                     </div>
@@ -60,4 +61,4 @@ const DrawerView = () => {
     )
 }
 
-export default DrawerView
+export default DrawerView;
