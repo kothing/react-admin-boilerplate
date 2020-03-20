@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import WebBreadcrumb from '@/components/WebBreadcrumb'
 import {
     Alert,
@@ -8,7 +8,6 @@ import {
     Divider,
     Form,
     Button,
-    Icon,
     Input,
     InputNumber,
     Checkbox,
@@ -22,40 +21,54 @@ import {
     Slider,
     AutoComplete,
     message
-} from 'antd'
+} from 'antd';
+import { UserOutlined, LockOutlined, QuestionCircleOutlined } from '@ant-design/icons';
 import '@/style/view-style/form.scss'
 
 const { Option } = Select
-const AutoCompleteOption = AutoComplete.Option
 
 const residences = [
     {
-        value: 'sichuan',
-        label: '四川',
+        value: 'beijing',
+        label: '北京',
         children: [
             {
-                value: 'chengdu',
-                label: '成都',
+                value: 'beijing',
+                label: '北京',
                 children: [
                     {
-                        value: 'gaoxin',
-                        label: '高新区'
+                        value: 'dongcheng',
+                        label: '东城区'
+                    },
+                    {
+                        value: 'chaoyang',
+                        label: '朝阳区'
                     }
                 ]
             }
         ]
     },
     {
-        value: 'gansu',
-        label: '甘肃',
+        value: 'xizang',
+        label: '西藏',
         children: [
             {
-                value: 'lanzhou',
-                label: '兰州',
+                value: 'lasa',
+                label: '拉萨',
                 children: [
                     {
-                        value: 'anning',
-                        label: '安宁区'
+                        value: 'chengguan',
+                        label: '城关区'
+                    }
+                ]
+            },
+            {
+                value: 'ali',
+                label: '阿里地区',
+                children: [
+                    {
+                        value: 'gaer',
+                        label: '噶尔县'
                     }
                 ]
             }
@@ -64,51 +77,30 @@ const residences = [
 ]
 
 const FromView = props => {
-    const [confirmDirty, setConfirmDirty] = useState(false)
-    const [autoCompleteResult, setAutoCompleteResult] = useState([])
-    const [visible, setVisible] = useState(true)
+    const [confirmDirty, setConfirmDirty] = useState(false);
+    const [autoCompleteResult, setAutoCompleteResult] = useState([]);
+    const [visible, setVisible] = useState(true);
 
-    const handleSubmit = e => {
-        e.preventDefault()
-        props.form.validateFieldsAndScroll((err, fieldsValue) => {
-            if (err) return
-            const values = {
-                ...fieldsValue,
-                'date-picker': fieldsValue['date-picker'] ? fieldsValue['date-picker'].format('YYYY-MM-DD') : ''
-            }
-            console.log('这就是你填好的数据' + values)
-            message.info('你很棒哦,这么快就填好了!')
-        })
+    const handleLoginFinish = values => {
+
     }
 
-    const compareToFirstPassword = (rule, value, callback) => {
-        const { form } = props
-        if (value && value !== form.getFieldValue('password')) {
-            callback('两次输入密码不一致!')
-        } else {
-            callback()
-        }
-    }
+    const handleSubmitFinish = values => {
+        console.log('这就是你填好的数据' + values)
+        message.info('你很棒哦,这么快就填好了!')
+    };
 
-    const validateToNextPassword = (rule, value, callback) => {
-        const { form } = props
-        if (value && confirmDirty) {
-            form.validateFields(['confirm'], { force: true })
-        }
-        callback()
-    }
+    const handleSubmitFinishFailed = (errorInfo) => {
+        console.log('Failed:', errorInfo);
+    };
 
-    const handleWebsiteChange = value => {
-        let autoCompleteResult
+    const handleEmailChange = value => {
         if (!value) {
-            autoCompleteResult = []
+            setAutoCompleteResult([]);
         } else {
-            autoCompleteResult = ['@google.com', '@163.com', '@qq.com'].map(domain => `${value}${domain}`)
+            setAutoCompleteResult(['@google.com', '@163.com', '@qq.com'].map(domain => `${value}${domain}`));
         }
-        setAutoCompleteResult(autoCompleteResult)
-    }
-
-    const { getFieldDecorator, getFieldValue } = props.form
+    };
 
     const formItemLayout = {
         labelCol: {
@@ -119,7 +111,7 @@ const FromView = props => {
             xs: { span: 16 },
             sm: { span: 10 }
         }
-    }
+    };
     const tailFormItemLayout = {
         wrapperCol: {
             xs: {
@@ -131,20 +123,23 @@ const FromView = props => {
                 offset: 6
             }
         }
-    }
+    };
 
-    const prefixSelector = getFieldDecorator('prefix', {
-        initialValue: '86'
-    })(
-        <Select style={{ width: 70 }}>
-            <Option value='86'>+86</Option>
-            <Option value='87'>+87</Option>
-        </Select>
-    )
+    const prefixSelector = (
+        <Form.Item name="phonePrefix" noStyle>
+            <Select style={{ width: 70 }}>
+                <Option value="86">+86</Option>
+                <Option value="87">+87</Option>
+            </Select>
+        </Form.Item>
+    );
 
     const websiteOptions = autoCompleteResult.map(website => (
-        <AutoCompleteOption key={website}>{website}</AutoCompleteOption>
-    ))
+        {
+            label: website,
+            value: website,
+        }
+    ));
 
     return (
         <Layout className='animated fadeIn'>
@@ -157,7 +152,6 @@ const FromView = props => {
                 <p>用于创建一个实体或收集信息。</p>
                 <p>需要对输入的数据类型进行校验时。</p>
             </div>
-
             <Row>
                 <Col>
                     <div className='base-style'>
@@ -172,171 +166,283 @@ const FromView = props => {
                                 />
                             ) : null}
                         </div>
+
+                        <Divider orientation='left'>登录框</Divider>
+                        <Row justify="center">
+                            <Col span={12} offset={6}>
+                                <Form
+                                    name="simple_login"
+                                    className="login-form"
+                                    initialValues={{
+                                        remember: true,
+                                    }}
+                                    onFinish={handleLoginFinish}
+                                    {...formItemLayout}
+                                >
+                                    <Form.Item
+                                        name="username"
+                                        rules={[
+                                        {
+                                            required: true,
+                                            message: 'Please input your Username!',
+                                        },
+                                        ]}
+                                    >
+                                        <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+                                    </Form.Item>
+                                    <Form.Item
+                                        name="password"
+                                        rules={[
+                                        {
+                                            required: true,
+                                            message: 'Please input your Password!',
+                                        },
+                                        ]}
+                                    >
+                                        <Input
+                                        prefix={<LockOutlined className="site-form-item-icon" />}
+                                        type="password"
+                                        placeholder="Password"
+                                        />
+                                    </Form.Item>
+                                    <Form.Item>
+                                        <Form.Item name="remember" valuePropName="checked" noStyle>
+                                            <Checkbox>Remember me</Checkbox>
+                                        </Form.Item>
+                                        <a className="login-form-forgot" href="/">
+                                            Forgot password
+                                        </a>
+                                    </Form.Item>
+                                    <Form.Item>
+                                        <Button type="primary" htmlType="submit" className="login-form-button">
+                                            Log in
+                                        </Button> 
+                                        {" "}Or <a href="/">register now!</a>
+                                    </Form.Item>
+                                </Form>
+                            </Col>
+                        </Row>
+
                         <Divider orientation='left'>基础功能</Divider>
-                        <Form {...formItemLayout} onSubmit={handleSubmit}>
+                        <Form
+                            {...formItemLayout}
+                            name='normal_login'
+                            onFinish={handleSubmitFinish}
+                            onFinishFailed={handleSubmitFinishFailed}
+                            initialValues={{
+                                hobby: ['A', 'B'],
+                                adress: ['beijing', 'beijing', 'dongcheng'],
+                                rate: 5,
+                                phonePrefix: 86,
+                                switch: true,
+                                slider: 30
+                            }}
+                            scrollToFirstError
+                        >
                             <Form.Item
                                 label={
                                     <span>
                                         用户名&nbsp;
                                         <Tooltip title='可以尽量好听点，真的!'>
-                                            <Icon type='question-circle-o' />
+                                            <QuestionCircleOutlined />
                                         </Tooltip>
                                     </span>
-                                }>
-                                {getFieldDecorator('username', {
-                                    rules: [{ required: true, message: '请输入用户名' }]
-                                })(<Input placeholder='请输入用户名' />)}
+                                }
+                                name="username"
+                                rules={[{ required: true, message: '请输入用户名' }]}
+                                >
+                                    <Input placeholder='请输入用户名' />
                             </Form.Item>
-                            <Form.Item label='性别'>
-                                {getFieldDecorator('sex', {
-                                    rules: [{ required: true, message: '请选择性别' }]
-                                })(
-                                    <Radio.Group>
-                                        <Radio value='man'>男</Radio>
-                                        <Radio value='women'>女</Radio>
-                                        <Radio value='unknow'>不详</Radio>
-                                    </Radio.Group>
-                                )}
+                            <Form.Item
+                                label='性别'
+                                name="sex"
+                                rules={ [{ required: true, message: '请选择性别' }]}
+                            >
+                                <Radio.Group>
+                                    <Radio value='man'>男</Radio>
+                                    <Radio value='women'>女</Radio>
+                                    <Radio value='unknow'>不详</Radio>
+                                </Radio.Group>
                             </Form.Item>
-                            <Form.Item label='爱好'>
-                                {getFieldDecorator('hobby', {
-                                    rules: [{ required: true, message: '请至少选择一个爱好' }],
-                                    initialValue: ['A', 'B']
-                                })(
-                                    <Checkbox.Group style={{ width: '100%' }}>
-                                        <Row>
-                                            <Col span={8}>
-                                                <Checkbox value='A'>A</Checkbox>
-                                            </Col>
-                                            <Col span={8}>
-                                                <Checkbox disabled value='B'>
-                                                    B
-                                                </Checkbox>
-                                            </Col>
-                                            <Col span={8}>
-                                                <Checkbox value='C'>C</Checkbox>
-                                            </Col>
-                                        </Row>
-                                    </Checkbox.Group>
-                                )}
+                            <Form.Item
+                                label='爱好'
+                                name="hobby"
+                                rules={[{ required: true, message: '请至少选择一个爱好' }]}
+                            >
+                                <Checkbox.Group style={{ width: '100%' }}>
+                                    <Row>
+                                        <Col span={8}>
+                                            <Checkbox value='A'>A</Checkbox>
+                                        </Col>
+                                        <Col span={8}>
+                                            <Checkbox disabled value='B'>
+                                                B
+                                            </Checkbox>
+                                        </Col>
+                                        <Col span={8}>
+                                            <Checkbox value='C'>C</Checkbox>
+                                        </Col>
+                                    </Row>
+                                </Checkbox.Group>
                             </Form.Item>
-                            <Form.Item label='年龄'>
-                                {getFieldDecorator('age', {
-                                    rules: [{ required: true, message: '请输入年龄' }]
-                                })(<InputNumber placeholder='请输入年龄' style={{ width: '100%' }} />)}
+                            <Form.Item
+                                label='年龄'
+                                name='age'
+                                rules={[{ required: true, message: '请输入年龄' }]}
+                            >
+                                <InputNumber placeholder='请输入年龄' style={{ width: '100%' }} />
                             </Form.Item>
-                            <Form.Item label='出生年月'>
-                                {getFieldDecorator('date-picker', {
-                                    rules: [{ type: 'object', required: true, message: '请选择日期' }]
-                                })(<DatePicker style={{ width: '100%' }} placeholder='请选择日期' />)}
+                            <Form.Item
+                                label='出生年月'
+                                name='date-picker'
+                                rules={[{ type: 'object', required: true, message: '请选择日期' }]}
+                            >
+                                <DatePicker style={{ width: '100%' }} placeholder='请选择日期' />
                             </Form.Item>
-
-                            <Form.Item label='邮箱'>
-                                {getFieldDecorator('email', {
-                                    rules: [
-                                        {
-                                            type: 'email',
-                                            message: '请输入正确的邮箱!'
+                            <Form.Item
+                                label='邮箱'
+                                name='email'
+                                rules={[
+                                    {
+                                        type: 'email',
+                                        message: '请输入正确的邮箱!'
+                                    },
+                                    {
+                                        required: true,
+                                        message: '请输入邮箱'
+                                    }
+                                ]}
+                            >
+                                <AutoComplete
+                                    options={websiteOptions}
+                                    onChange={handleEmailChange}
+                                    placeholder='请输入邮箱'
+                                >
+                                    <Input />
+                                </AutoComplete>
+                            </Form.Item>
+                            <Form.Item
+                                label='密码'
+                                name='password'
+                                rules={[
+                                    {
+                                        required: true,
+                                        message: 'Please input your password!',
+                                    },
+                                ]}
+                                hasFeedback
+                            >
+                                <Input.Password placeholder='请输入密码' />
+                            </Form.Item>
+                            <Form.Item
+                                label='确认密码'
+                                name='confirm'
+                                hasFeedback
+                                rules={[
+                                    {
+                                        required: true,
+                                        message: '请确认密码!',
+                                    },
+                                    ({ getFieldValue }) => ({
+                                        validator(rule, value) {
+                                            if (!value || getFieldValue('password') === value) {
+                                                return Promise.resolve();
+                                            }
+                                            return Promise.reject('两次输入密码不一致!');
                                         },
-                                        {
-                                            required: true,
-                                            message: '请输入邮箱'
-                                        }
-                                    ]
-                                })(
-                                    <AutoComplete
-                                        dataSource={websiteOptions}
-                                        onChange={handleWebsiteChange}
-                                        placeholder='请输入邮箱'>
-                                        <Input />
-                                    </AutoComplete>
-                                )}
+                                    }),
+                                ]}
+                            >
+                                <Input.Password
+                                    onBlur={e =>
+                                        setConfirmDirty(() => (confirmDirty ? confirmDirty : !!e.target.value))
+                                    }
+                                    placeholder='请确认密码'
+                                />
                             </Form.Item>
-                            <Form.Item label='密码' hasFeedback>
-                                {getFieldDecorator('password', {
-                                    rules: [
-                                        {
-                                            required: true,
-                                            message: '请输入密码!'
-                                        },
-                                        {
-                                            validator: validateToNextPassword
-                                        }
-                                    ]
-                                })(<Input.Password placeholder='请输入密码' />)}
+                            <Form.Item
+                                label='家庭住址'
+                                name='adress'
+                                rules={[{ type: 'array', required: true, message: '请选择住址!' }]}
+                            >
+                                <Cascader options={residences} placeholder='请选择住址' />
                             </Form.Item>
-                            <Form.Item label='确认密码' hasFeedback>
-                                {getFieldDecorator('confirm', {
-                                    rules: [
-                                        {
-                                            required: true,
-                                            message: '请确认密码!'
-                                        },
-                                        {
-                                            validator: compareToFirstPassword
-                                        }
-                                    ]
-                                })(
-                                    <Input.Password
-                                        onBlur={e =>
-                                            setConfirmDirty(() => (confirmDirty ? confirmDirty : !!e.target.value))
-                                        }
-                                        placeholder='请确认密码'
-                                    />
-                                )}
+                            <Form.Item
+                                label='联系电话'
+                                name='phone'
+                                extra='你最好写真实的电话号码.'
+                                rules={[{ required: true, message: '请输入联系电话!' }]}
+                            >
+                                <Input addonBefore={prefixSelector} />
                             </Form.Item>
-                            <Form.Item label='家庭住址'>
-                                {getFieldDecorator('adress', {
-                                    initialValue: ['sichuan', 'chengdu', 'gaoxin'],
-                                    rules: [{ type: 'array', required: true, message: '请选择住址!' }]
-                                })(<Cascader options={residences} placeholder='请选择住址' />)}
+                            <Form.Item
+                                label='评分'
+                                name='rate'
+                                extra='这个项目怎么样.'
+                            >
+                                <Rate allowHalf />
                             </Form.Item>
-                            <Form.Item label='联系电话' extra='你最好写真实的电话号码.'>
-                                {getFieldDecorator('phone', {
-                                    rules: [{ required: true, message: '请输入联系电话!' }]
-                                })(<Input addonBefore={prefixSelector} />)}
+                            <Form.Item
+                                label='switch'
+                                name='switch'
+                                valuePropName="checked"
+                            >
+                                <Switch />
                             </Form.Item>
-                            <Form.Item label='评分' extra='这个项目怎么样.'>
-                                {getFieldDecorator('rate', {
-                                    initialValue: 5
-                                })(<Rate disabled allowHalf />)}
+                            <Form.Item
+                                label='slider'
+                                shouldUpdate={true}
+                            >
+                                {({getFieldValue}) => {
+                                    return getFieldValue('switch') === true
+                                    ? <Form.Item name="slider">
+                                            <Slider />
+                                        </Form.Item>
+                                    : <Form.Item name="slider">
+                                            <Slider disabled />
+                                        </Form.Item>;
+                                }}
                             </Form.Item>
-                            <Form.Item label='switch'>
-                                {getFieldDecorator('switch', {
-                                    valuePropName: 'checked',
-                                    initialValue: true
-                                })(<Switch />)}
+                            <Form.Item
+                                {...tailFormItemLayout}
+                                name='agreement'
+                                valuePropName="checked"
+                            >
+                                <Checkbox>
+                                    阅读并理解 <a href='/'>此协议</a>
+                                </Checkbox>
                             </Form.Item>
-                            <Form.Item label='slider'>
-                                {getFieldDecorator('slider', {
-                                    initialValue: 30
-                                })(<Slider disabled={getFieldValue('switch') ? false : true} />)}
-                            </Form.Item>
-                            <Form.Item {...tailFormItemLayout}>
-                                {getFieldDecorator('agreement', {
-                                    valuePropName: 'checked'
-                                })(
-                                    <Checkbox>
-                                        阅读并理解 <a href='/'>此协议</a>
-                                    </Checkbox>
-                                )}
-                            </Form.Item>
-                            <Form.Item {...tailFormItemLayout}>
-                                <Button
-                                    type='primary'
-                                    htmlType='submit'
-                                    disabled={getFieldValue('agreement') ? false : true}>
-                                    注册
-                                </Button>
+                            <Form.Item
+                                {...tailFormItemLayout}
+                                shouldUpdate={true}
+                            >
+                                {({getFieldValue}) => {
+                                    return getFieldValue('agreement') === true
+                                    ? <Form.Item>
+                                            <Button
+                                                type='primary'
+                                                htmlType='submit'
+                                            >
+                                                注册
+                                            </Button>
+                                        </Form.Item>
+                                    : <Form.Item>
+                                            <Button
+                                                type='primary'
+                                                htmlType='submit'
+                                                disabled
+                                            >
+                                                注册
+                                            </Button>
+                                        </Form.Item>;
+                                }}
                             </Form.Item>
                         </Form>
                     </div>
                 </Col>
             </Row>
         </Layout>
-    )
+    );
 }
 
-const WrappedNormalLoginForm = Form.create({ name: 'normal_login' })(FromView)
-
-export default WrappedNormalLoginForm
+export default FromView;
