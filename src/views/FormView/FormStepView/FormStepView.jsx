@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import WebBreadcrumb from '@/components/WebBreadcrumb'
-import { Layout, Divider, Row, Col, Steps, Button, Form, Input, Select, Alert, Result } from 'antd'
+import React, { useState } from 'react';
+import WebBreadcrumb from '@/components/WebBreadcrumb';
+import { Layout, Divider, Row, Col, Steps, Button, Form, Input, Select, Alert, Result } from 'antd';
 import '@/style/view-style/form.scss'
 
 const { Step } = Steps
@@ -21,90 +21,102 @@ const tailFormItemLayout = {
     }
 }
 
-const Step1 = props => {
+const Step1From = props => {
+    const [form] = Form.useForm();
     const handleSelectChange = value => {
-        props.form.setFieldsValue({
+        form.setFieldsValue({
             Email: `${value === 'kenan' ? 'kenan@google.com' : 'maoli@google.com'}`
         })
     }
 
-    const step1Submit = e => {
-        e.preventDefault()
-        props.form.validateFields((err, val) => {
-            if (!err) {
-                props.getFormData(val)
-                props.setCurrent(1)
-            }
-        })
+    const step1Submit = () => {
+        form.validateFields().then((values) => {
+            props.getFormData(values)
+            props.setCurrent(1)
+        }).catch(errorInfo => {
+            console.log(errorInfo);
+        });
     }
 
-    const { getFieldDecorator } = props.form
-
-    const selectBefore = getFieldDecorator('Type', {
-        initialValue: 'twitter'
-    })(
-        <Select style={{ width: '8rem' }}>
-            <Option value='twitter'>twitter</Option>
-            <Option value='facebook'>facebook</Option>
-            <Option value='weixin'>微信</Option>
-        </Select>
-    )
+    const typeSelectBefore = (
+        <Form.Item
+            name='type'
+            noStyle
+        >
+            <Select style={{ width: '10rem' }}>
+                <Option value='twitter'>twitter</Option>
+                <Option value='facebook'>facebook</Option>
+                <Option value='weixin'>微信</Option>
+            </Select>
+        </Form.Item>
+    );
     return (
-        <div>
-            <Form hideRequiredMark {...formItemLayout}>
-                <Form.Item label='接收人'>
-                    {getFieldDecorator('User', {
-                        initialValue: '柯南',
-                        rules: [
-                            {
-                                required: true,
-                                message: '请选择接收人'
-                            }
-                        ]
-                    })(
-                        <Select onChange={handleSelectChange}>
-                            <Option value='柯南'>柯南</Option>
-                            <Option value='毛利大叔'>毛利大叔</Option>
-                        </Select>
-                    )}
+        <div className='step1From'>
+            <Form 
+                form={form}
+                hideRequiredMark
+                initialValues={{
+                    user: '柯南',
+                    email: 'kenan@google.com',
+                    password: '真相只有一个!',
+                    code: 'kenan0528',
+                    type: 'twitter'
+                }}
+                {...formItemLayout}
+            >
+                <Form.Item 
+                    label='接收人'
+                    name='user'
+                    rules={[
+                        {
+                            required: true,
+                            message: '请选择接收人'
+                        }
+                    ]}
+                >
+                    <Select onChange={handleSelectChange}>
+                        <Option value='柯南'>柯南</Option>
+                        <Option value='毛利大叔'>毛利大叔</Option>
+                    </Select>
                 </Form.Item>
-                <Form.Item label='接收邮箱'>
-                    {getFieldDecorator('Email', {
-                        initialValue: 'kenan@google.com',
-                        rules: [
-                            {
-                                required: true,
-                                message: '请选择接收人'
-                            }
-                        ]
-                    })(
-                        <Select disabled>
-                            <Option value='kenan@google.com'>kenan@google.com</Option>
-                            <Option value='maoli@google.com'>maoli@google.com</Option>
-                        </Select>
-                    )}
+                <Form.Item 
+                    label='接收邮箱'
+                    name='email'
+                    rules={[
+                        {
+                            required: true,
+                            message: '请选择接收人'
+                        }
+                    ]}
+                >
+                    <Select disabled>
+                        <Option value='kenan@google.com'>kenan@google.com</Option>
+                        <Option value='maoli@google.com'>maoli@google.com</Option>
+                    </Select>
                 </Form.Item>
-                <Form.Item label='暗号'>
-                    {getFieldDecorator('Password', {
-                        initialValue: '真相只有一个!',
-                        rules: [
-                            {
-                                required: true,
-                                message: '请输入对接暗号'
-                            }
-                        ]
-                    })(<Input placeholder='请输入对接暗号' />)}
+                <Form.Item
+                    label='暗号'
+                    name='password'
+                    relues={[
+                        {
+                            required: true,
+                            message: '请输入对接暗号'
+                        }
+                    ]}
+                >
+                    <Input placeholder='请输入对接暗号' />
                 </Form.Item>
-                <Form.Item label='联系方式'>
-                    {getFieldDecorator('Code', {
-                        initialValue: 'kenan0528',
-                        rules: [
-                            {
-                                required: true,
-                                message: '请输入联系方式'
-                            }
-                        ]
-                    })(<Input addonBefore={selectBefore} placeholder='请输入联系方式' />)}
+                <Form.Item
+                    label='联系方式'
+                    name='code'
+                    rules={[
+                        {
+                            required: true,
+                            message: '请输入联系方式'
+                        }
+                    ]}
+                >
+                    <Input addonBefore={typeSelectBefore} placeholder='请输入联系方式' />
                 </Form.Item>
                 <Form.Item {...tailFormItemLayout}>
                     <Button type='primary' onClick={step1Submit}>
@@ -117,8 +129,8 @@ const Step1 = props => {
 }
 
 const Step2From = props => {
-    const [visible, setVisible] = useState(true)
-    const [iconLoading, setIconLoading] = useState(false)
+    const [visible, setVisible] = useState(true);
+    const [iconLoading, setIconLoading] = useState(false);
 
     const step2Submit = () => {
         setIconLoading(true)
@@ -126,11 +138,11 @@ const Step2From = props => {
             setIconLoading(false)
             props.setCurrent(2)
         }, 2000)
-    }
+    };
 
-    const { formData } = props
+    const { formData } = props;
     return (
-        <div>
+        <div className='step2From'>
             <Row>
                 <Col span={8} offset={8}>
                     {visible ? (
@@ -145,12 +157,16 @@ const Step2From = props => {
                     ) : null}
                 </Col>
             </Row>
-            <Form hideRequiredMark {...formItemLayout} className='show-data'>
-                <Form.Item label='接收人'>{formData.User}</Form.Item>
-                <Form.Item label='接收邮箱'>{formData.Email}</Form.Item>
-                <Form.Item label='暗号'>{formData.Password}</Form.Item>
-                <Form.Item label='联系渠道'>{formData.Type}</Form.Item>
-                <Form.Item label='联系方式'>{formData.Code}</Form.Item>
+            <Form
+                hideRequiredMark
+                className='show-data'
+                {...formItemLayout}
+            >
+                <Form.Item label='接收人'>{formData.user}</Form.Item>
+                <Form.Item label='接收邮箱'>{formData.email}</Form.Item>
+                <Form.Item label='暗号'>{formData.password}</Form.Item>
+                <Form.Item label='联系渠道'>{formData.type}</Form.Item>
+                <Form.Item label='联系方式'>{formData.code}</Form.Item>
                 <Divider />
                 <Form.Item {...tailFormItemLayout}>
                     <Button type='primary' loading={iconLoading} onClick={step2Submit}>
@@ -179,8 +195,6 @@ const Step3From = props => {
     )
 }
 
-const Step1From = Form.create()(Step1)
-
 const FormStepView = props => {
     const [current, setCurrent] = useState(0)
     const [formData, setFormData] = useState(null)
@@ -205,7 +219,6 @@ const FormStepView = props => {
                                 <Step title='确认接收信息'></Step>
                                 <Step title='完成'></Step>
                             </Steps>
-
                             {current === 0 && (
                                 <Step1From getFormData={val => setFormData(val)} setCurrent={val => setCurrent(val)} />
                             )}
@@ -219,4 +232,4 @@ const FormStepView = props => {
     )
 }
 
-export default FormStepView
+export default FormStepView;
