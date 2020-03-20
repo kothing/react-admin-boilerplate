@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
-import WebBreadcrumb from '@/components/WebBreadcrumb'
-import { Layout, Divider, Row, Col, Tag, Table, Button, Anchor } from 'antd'
-import '@/style/view-style/table.scss'
+import React, { Component } from 'react';
+import WebBreadcrumb from '@/components/WebBreadcrumb';
+import { Layout, Divider, Row, Col, Tag, Table, Button, Anchor } from 'antd';
+import '@/style/view-style/table.scss';
 
-const { Column } = Table
-const { Link } = Anchor
+const { Column } = Table;
+const { Link } = Anchor;
 
 const columns = [
     {
@@ -54,9 +54,9 @@ const columns = [
             </span>
         )
     }
-]
+];
 
-const data = []
+const data = [];
 for (let i = 0; i < 46; i++) {
     data.push({
         key: i,
@@ -113,15 +113,15 @@ class Table2 extends Component {
 class Table3 extends Component {
     state = {
         selectedRowKeys: []
-    }
+    };
 
     onSelectChange = selectedRowKeys => {
         console.log('selectedRowKeys changed: ', selectedRowKeys)
         this.setState({ selectedRowKeys })
-    }
+    };
 
     render() {
-        const { selectedRowKeys } = this.state
+        const { selectedRowKeys } = this.state;
         const rowSelection = {
             selectedRowKeys,
             onChange: this.onSelectChange,
@@ -165,7 +165,7 @@ class Table3 extends Component {
                     }
                 }
             ]
-        }
+        };
         return <Table rowSelection={rowSelection} columns={columns} dataSource={data} />
     }
 }
@@ -174,25 +174,26 @@ class Table4 extends Component {
     state = {
         filteredInfo: null,
         sortedInfo: null
-    }
+    };
+
     handleChange = (pagination, filters, sorter) => {
         console.log('Various parameters', pagination, filters, sorter)
         this.setState({
             filteredInfo: filters,
             sortedInfo: sorter
         })
-    }
+    };
 
     clearFilters = () => {
         this.setState({ filteredInfo: null })
-    }
+    };
 
     clearAll = () => {
         this.setState({
             filteredInfo: null,
             sortedInfo: null
         })
-    }
+    };
 
     setAgeSort = () => {
         this.setState({
@@ -201,7 +202,8 @@ class Table4 extends Component {
                 columnKey: 'age'
             }
         })
-    }
+    };
+
     render() {
         let { sortedInfo, filteredInfo } = this.state
         sortedInfo = sortedInfo || {}
@@ -238,7 +240,7 @@ class Table4 extends Component {
             }
         ]
         return (
-            <div>
+            <div className='table4'>
                 <div className='table-operations'>
                     <Button onClick={this.setAgeSort}>Sort age</Button>
                     <Button onClick={this.clearFilters}>Clear filters</Button>
@@ -263,36 +265,35 @@ class TableView extends Component {
                     <p>当有大量结构化的数据需要展现时；</p>
                     <p>当需要对数据进行排序、搜索、分页、自定义操作等复杂行为时。</p>
                 </div>
-
                 <Row>
-                    <Anchor className='toc-affix'>
-                        <Link href='#basic' title='基础表格' />
-                        <Link href='#JSX' title='JSX表格' />
-                        <Link href='#checked' title='可选表格' />
-                        <Link href='#sort' title='可筛选排序表格' />
-                    </Anchor>
-                    <Col>
+                    <Col span={24}>
                         <div className='base-style'>
                             <h3 id='basic'>基础表格</h3>
+                            <Anchor className='toc-affix'>
+                                <Link href='#/show/table/#basic' title='基础表格' />
+                                <Link href='#/show/table/#JSX' title='JSX表格' />
+                                <Link href='#/show/table/#checked' title='可选表格' />
+                                <Link href='#/show/table/#sort' title='可筛选排序表格' />
+                            </Anchor>
                             <Divider />
                             <Table1 />
                         </div>
                     </Col>
-                    <Col>
+                    <Col span={24}>
                         <div className='base-style'>
                             <h3 id='JSX'>JSX表单</h3>
                             <Divider orientation='left'>JSX表格</Divider>
                             <Table2 />
                         </div>
                     </Col>
-                    <Col>
+                    <Col span={24}>
                         <div className='base-style'>
                             <h3 id='checked'>可选表单</h3>
                             <Divider orientation='left'>可选表格</Divider>
                             <Table3 />
                         </div>
                     </Col>
-                    <Col>
+                    <Col span={24}>
                         <div className='base-style'>
                             <h3 id='sort'>可筛选排序表单</h3>
                             <Divider orientation='left'>可筛选排序表格</Divider>
@@ -305,4 +306,4 @@ class TableView extends Component {
     }
 }
 
-export default TableView
+export default TableView;
