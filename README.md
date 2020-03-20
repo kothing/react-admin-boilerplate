@@ -2,7 +2,7 @@
 
 * react 16.10.1
 * react-hook
-* antd 3.23.5
+* antd 4.0.3
 * braft-editor
 * echarts
 
