@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import Loadable from 'react-loadable'
+import loadable from "@loadable/component";
 import WebProgress from '@/components/WebProgress/'
 
 const useLoadingComponent = () => {
@@ -8,14 +8,12 @@ const useLoadingComponent = () => {
         return () => {
             WebProgress.done();
         }
-    }, [])
-
+    }, []);
     return <div />
 }
 
-export default (loader, loading = useLoadingComponent) => {
-    return Loadable({
-        loader,
-        loading
+export default (Loader, Loading = useLoadingComponent) => {
+    return loadable(Loader, {
+        fallback: <Loading/>
     })
 }
