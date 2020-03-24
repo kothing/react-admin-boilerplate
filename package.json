@@ -47,7 +47,41 @@
         ],
         "rules": {
             "react-hooks/rules-of-hooks": "error",
-            "react-hooks/exhaustive-deps": "warn"
+            "react-hooks/exhaustive-deps": "warn",
+            "no-multi-spaces": 1,
+            "react/jsx-space-before-closing": 1,
+            "jsx-quotes": 1,
+            "react/jsx-closing-bracket-location": 1,
+            "react/jsx-boolean-value": 1,
+            "react/no-string-refs": 1,
+            "react/self-closing-comp": 1,
+            "react/sort-comp": 1,
+            "react/jsx-pascal-case": 1,
+            "semi": ["error", "always"],
+            "quotes": ["error", "double"],
+            "arrow-spacing": [2, {
+                "before": true,
+                "after": true
+            }],
+            "block-spacing": [2, "always"],
+            "brace-style": [2, "1tbs", {
+                "allowSingleLine": true
+            }],
+            "camelcase": [0, {
+                "properties": "always"
+            }],
+            "comma-dangle": 0,
+            "comma-spacing": [2, {
+                "before": false,
+                "after": true
+            }],
+            "generator-star-spacing": [2, {
+                "before": true,
+                "after": true
+            }],
+            "indent": [2, 2, {
+                "SwitchCase": 1
+            }]
         }
     },
     "browserslist": {
