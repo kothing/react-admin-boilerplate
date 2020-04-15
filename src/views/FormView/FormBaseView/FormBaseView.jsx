@@ -153,7 +153,7 @@ const FromView = props => {
                 <p>需要对输入的数据类型进行校验时。</p>
             </div>
             <Row>
-                <Col span={12}>
+                <Col span={24}>
                     <div className='base-style'>
                         <div>
                             {visible ? (
