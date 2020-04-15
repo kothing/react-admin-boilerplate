@@ -12,7 +12,7 @@ import {
     InputNumber,
     Checkbox,
     Tooltip,
-    // Cascader,
+    Cascader,
     Select,
     DatePicker,
     Radio,
@@ -360,13 +360,13 @@ const FromView = props => {
                                     placeholder='请确认密码'
                                 />
                             </Form.Item>
-                            {/* <Form.Item
+                            <Form.Item
                                 label='家庭住址'
                                 name='adress'
                                 rules={[{ type: 'array', required: true, message: '请选择住址!' }]}
                             >
                                 <Cascader options={residences} placeholder='请选择住址' />
-                            </Form.Item> */}
+                            </Form.Item>
                             <Form.Item
                                 label='联系电话'
                                 name='phone'
