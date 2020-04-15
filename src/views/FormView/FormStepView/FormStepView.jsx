@@ -210,7 +210,7 @@ const FormStepView = props => {
                 <p>当用户需要分步收集不同信息时</p>
             </div>
             <Row>
-                <Col span={12}>
+                <Col span={24}>
                     <div className='base-style'>
                         <Divider orientation='left'>分步表单</Divider>
                         <div>
