@@ -12,5 +12,4 @@ Demo https://kothing-react-admin.now.sh/
 React-admin-boilerplate
  screenshot
 ![react-admin-boilerplate
-](https://raw.githubusercontent.com/kothing/react-admin-boilerplate
-/master/screenshot.jpg "React-admin-boilerplate")
+](https://github.com/kothing/react-admin-boilerplate/blob/master/screenshot.jpg "React-admin-boilerplate")
