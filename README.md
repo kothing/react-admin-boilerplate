@@ -7,7 +7,7 @@
 * braft-editor
 * echarts
 
-Demo https://kothing-react-admin.now.sh/
+Demo https://react-admin-boilerplate.now.sh/
 
 React-admin-boilerplate
  screenshot
