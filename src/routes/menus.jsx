@@ -1,5 +1,5 @@
 import React from 'react';
-import { HomeOutlined, AppstoreOutlined, CompassOutlined, FormOutlined, PieChartOutlined, PaperClipOutlined, BarsOutlined, UserOutlined } from '@ant-design/icons';
+import { HomeOutlined, AppstoreOutlined, CompassOutlined, FormOutlined, PieChartOutlined, PaperClipOutlined, BarsOutlined, UserOutlined, FundViewOutlined } from '@ant-design/icons';
 
 const menus = [
     {
@@ -77,7 +77,13 @@ const menus = [
         key: '/about',
         icon: <UserOutlined />,
         auth: [1]
-    }
+    },
+  {
+    title: "示例",
+    key: "/example",
+    icon: <FundViewOutlined />,
+    auth: [1]
+  }
 ]
 
 export default menus;
