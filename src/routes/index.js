@@ -30,7 +30,12 @@ const UploadView = AsyncLoadable(() => import(/* webpackChunkName: 'upload' */ '
 
 // 多级导航
 const Three = AsyncLoadable(() => import(/* webpackChunkName: 'three' */ '@/views/TestView'));
+
+//关于
 const About = AsyncLoadable(() => import(/* webpackChunkName: 'about' */ '@/views/About'));
+
+// 示例
+const Example = AsyncLoadable(() => import(/* webpackChunkName: 'example' */ "@/views/TestView/Example"));
 
 const routes = [
     { path: '/index', exact: true, name: 'Index', component: Index, auth: [1] },
@@ -50,7 +55,8 @@ const routes = [
     { path: '/others/editor', exact: false, name: '富文本', component: EditorView, auth: [1] },
     { path: '/others/upload', exact: false, name: '上传', component: UploadView, auth: [1] },
     { path: '/one/two/three', exact: false, name: '三级', component: Three },
-    { path: '/about', exact: false, name: '关于', component: About, auth: [1] }
+    { path: '/about', exact: false, name: '关于', component: About, auth: [1] },
+    { path: "/example", exact: false, name: "示例", component: Example, auth: [1] }
 ]
 
 export default routes;
