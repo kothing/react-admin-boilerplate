@@ -63,7 +63,8 @@ const Example2 = () => {
     const deleteTodo = id => dispatch({ type: "delete", payload: id });
 
     return (
-      <div>
+      <>
+        <h2>TODOLIST</h2>
         <Form
           name="todolist"
           onFinish={onFinish}
@@ -84,8 +85,6 @@ const Example2 = () => {
             </Button>
           </Form.Item>
         </Form>
-   
-        <h2>TODOLIST</h2>
         <ul>
           {state.todos.map(todo => (
             <li key={todo.id}>
@@ -99,7 +98,7 @@ const Example2 = () => {
             </li>
           ))}
         </ul>
-      </div>
+      </>
     );
   }
 
