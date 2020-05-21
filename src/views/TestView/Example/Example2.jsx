@@ -52,8 +52,12 @@ const Example2 = () => {
     const onSubmit = e => {
       e.preventDefault();
       const todo = inputRef.current.value;
-      inputRef.current.value = "";
-      dispatch({ type: "create", payload: todo });
+      if (todo && todo !== "") {
+        inputRef.current.value = "";
+        dispatch({ type: "create", payload: todo });
+      } else {
+        window.alert("Please enter content");
+      }
     };
     const deleteTodo = id => dispatch({ type: "delete", payload: id });
 
