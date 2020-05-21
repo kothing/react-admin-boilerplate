@@ -49,27 +49,18 @@ const Example2 = () => {
   function TodoList() {
     // Grab the correct store by specifying its namespace
     const [state, dispatch] = useStore("todoList");
-    const inputRef = useRef(null);
+    const [form] = Form.useForm();
     
     const onFinish = values => {
       console.log('Success:', values);
       dispatch({ type: "create", payload: values.todo });
+      form.resetFields();
     };
 
     const onFinishFailed = errorInfo => {
       console.log('Failed:', errorInfo);
     };
     
-    const onSubmit = e => {
-      e.preventDefault();
-      const todo = inputRef.current.value;
-      if (todo && todo !== "") {
-        inputRef.current.value = "";
-        dispatch({ type: "create", payload: todo });
-      } else {
-        window.alert("Please enter content");
-      }
-    };
     const deleteTodo = id => dispatch({ type: "delete", payload: id });
 
     return (
@@ -79,6 +70,7 @@ const Example2 = () => {
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
           layout="inline"
+          form={form}
         >
           <Form.Item
             label="Todo"
