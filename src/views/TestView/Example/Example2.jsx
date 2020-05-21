@@ -75,10 +75,10 @@ const Example2 = () => {
     return (
       <div>
         <Form
-          {...layout}
           name="todolist"
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
+          layout="inline"
         >
           <Form.Item
             label="Todolist"
