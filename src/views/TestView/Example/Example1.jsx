@@ -50,7 +50,7 @@ function reducer(state, action) {
   }
 }
 
-const Example = () => {
+const Example1 = () => {
   const [state, dispatch] = useReducer(reducer, initialState, init);
   return (
     <Layout>
@@ -70,4 +70,4 @@ const Example = () => {
   );
 };
 
-export default Example;
+export default Example1;
