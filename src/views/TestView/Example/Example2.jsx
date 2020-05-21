@@ -93,6 +93,7 @@ const Example2 = () => {
               <button
                 onClick={() => deleteTodo(todo.id)}
                 type="button"
+                style={{cursor: "pointer"}}
               >
                 X
               </button>
