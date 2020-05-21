@@ -1,6 +1,7 @@
 import React from "react";
 import { Layout, Divider } from "antd";
 import WebBreadcrumb from "@/components/WebBreadcrumb";
+import "./style.less";
 import Example1 from "./Example1.jsx";
 import Example2 from "./Example2.jsx";
 
