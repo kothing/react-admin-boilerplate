@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { Form, Input, Button } from 'antd';
 import { createStore, useStore } from "@/utils/React-Storage-Factory";
 import axios from "@/api";
@@ -44,7 +44,6 @@ const Example2 = () => {
     });
   });
 
-
   //TodoList
   function TodoList() {
     // Grab the correct store by specifying its namespace
@@ -86,12 +85,8 @@ const Example2 = () => {
           </Form.Item>
         </Form>
    
-        <form onSubmit={onSubmit}>
-          <Input ref={inputRef} />
-          <button>Create TODO</button>
-        </form>
+        <h2>TODOLIST</h2>
         <ul>
-          <h2>TODOLIST</h2>
           {state.todos.map(todo => (
             <li key={todo.id}>
               {todo.text}{" "}
