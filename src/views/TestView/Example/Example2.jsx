@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { Form, Input } from 'antd';
 import { createStore, useStore } from "@/utils/React-Storage-Factory";
 import axios from "@/api";
 
@@ -49,6 +50,16 @@ const Example2 = () => {
     // Grab the correct store by specifying its namespace
     const [state, dispatch] = useStore("todoList");
     const inputRef = useRef(null);
+    
+    const onFinish = values => {
+      console.log('Success:', values);
+      dispatch({ type: "create", payload: values });
+    };
+
+    const onFinishFailed = errorInfo => {
+      console.log('Failed:', errorInfo);
+    };
+    
     const onSubmit = e => {
       e.preventDefault();
       const todo = inputRef.current.value;
@@ -63,8 +74,28 @@ const Example2 = () => {
 
     return (
       <div>
+        <Form
+          {...layout}
+          name="todolist"
+          onFinish={onFinish}
+          onFinishFailed={onFinishFailed}
+        >
+          <Form.Item
+            label="Todolist"
+            name="todolist"
+            rules={[{ required: true, message: 'Please input your content!' }]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item>
+            <Button type="primary" htmlType="submit">
+              Submit
+            </Button>
+          </Form.Item>
+        </Form>
+   
         <form onSubmit={onSubmit}>
-          <input ref={inputRef} />
+          <Input ref={inputRef} />
           <button>Create TODO</button>
         </form>
         <ul>
