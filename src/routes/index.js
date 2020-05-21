@@ -29,7 +29,7 @@ const EditorView = AsyncLoadable(() => import(/* webpackChunkName: 'editor' */ '
 const UploadView = AsyncLoadable(() => import(/* webpackChunkName: 'upload' */ '@/views/Others/Upload'));
 
 // 多级导航
-const Three = AsyncLoadable(() => import(/* webpackChunkName: 'three' */ '@/views/TestView'));
+const Three = AsyncLoadable(() => import(/* webpackChunkName: 'three' */ '@/views/TestView/SubView'));
 
 //关于
 const About = AsyncLoadable(() => import(/* webpackChunkName: 'about' */ '@/views/About'));
