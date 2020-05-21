@@ -1,3 +1,4 @@
-import TestView from './TestView.jsx'
+import SubView from "./SubView.jsx";
+import Example from "./Example.jsx";
 
-export default TestView
+export { SubView, Example };
