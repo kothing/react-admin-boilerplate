@@ -89,7 +89,7 @@ const Example2 = () => {
         <ul>
           {state.todos.map(todo => (
             <li key={todo.id}>
-              {todo.text}{" "}
+              <span>{todo.text}</span>{" "}
               <button
                 onClick={() => deleteTodo(todo.id)}
                 type="button"
