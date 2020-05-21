@@ -1,5 +1,6 @@
 import AsyncLoadable from '@/utils/AsyncLoadable';
 
+// 首页
 const Index = AsyncLoadable(() => import(/* webpackChunkName: 'index' */ '@/views/Index'));
 
 // 通用
@@ -27,6 +28,7 @@ const AnimationView = AsyncLoadable(() => import(/* webpackChunkName: 'animation
 const EditorView = AsyncLoadable(() => import(/* webpackChunkName: 'editor' */ '@/views/Others/Editor'));
 const UploadView = AsyncLoadable(() => import(/* webpackChunkName: 'upload' */ '@/views/Others/Upload'));
 
+// 多级导航
 const Three = AsyncLoadable(() => import(/* webpackChunkName: 'three' */ '@/views/TestView'));
 const About = AsyncLoadable(() => import(/* webpackChunkName: 'about' */ '@/views/About'));
 
