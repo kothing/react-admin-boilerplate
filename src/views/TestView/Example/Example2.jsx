@@ -53,7 +53,7 @@ const Example2 = () => {
     
     const onFinish = values => {
       console.log('Success:', values);
-      dispatch({ type: "create", payload: values });
+      dispatch({ type: "create", payload: values.todo });
     };
 
     const onFinishFailed = errorInfo => {
@@ -81,8 +81,8 @@ const Example2 = () => {
           layout="inline"
         >
           <Form.Item
-            label="Todolist"
-            name="todolist"
+            label="Todo"
+            name="todo"
             rules={[{ required: true, message: 'Please input your content!' }]}
           >
             <Input />
