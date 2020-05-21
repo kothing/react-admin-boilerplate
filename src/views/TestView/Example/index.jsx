@@ -1,3 +1,4 @@
+import React from "react";
 import { Layout, Divider } from "antd";
 import WebBreadcrumb from "@/components/WebBreadcrumb";
 import Example1 from "./Example1.jsx";
