@@ -1,41 +1,41 @@
-import AsyncLoadable from '@/utils/AsyncLoadable';
+import AsyncLoadable from '@/utils/AsyncLoadable'
 
 // 首页
-const Index = AsyncLoadable(() => import(/* webpackChunkName: 'index' */ '@/views/Index'));
+const Index = AsyncLoadable(() => import(/* webpackChunkName: 'index' */ '@/views/Index'))
 
 // 通用
-const ButtonView = AsyncLoadable(() => import(/* webpackChunkName: 'button' */ '@/views/PublicView/Button'));
-const IconView = AsyncLoadable(() => import(/* webpackChunkName: 'icon' */ '@/views/PublicView/Icon'));
+const ButtonView = AsyncLoadable(() => import(/* webpackChunkName: 'button' */ '@/views/Public/Button'))
+const IconView = AsyncLoadable(() => import(/* webpackChunkName: 'icon' */ '@/views/Public/Icon'))
 
 // 导航
-const DropdownView = AsyncLoadable(() => import(/* webpackChunkName: 'dropdown' */ '@/views/NavView/Dropdown'));
-const MenuView = AsyncLoadable(() => import(/* webpackChunkName: 'menu' */ '@/views/NavView/Menu'));
-const StepView = AsyncLoadable(() => import(/* webpackChunkName: 'step' */ '@/views/NavView/Step'));
+const DropdownView = AsyncLoadable(() => import(/* webpackChunkName: 'dropdown' */ '@/views/Nav/Dropdown'))
+const MenuView = AsyncLoadable(() => import(/* webpackChunkName: 'menu' */ '@/views/Nav/Menu'))
+const StepView = AsyncLoadable(() => import(/* webpackChunkName: 'step' */ '@/views/Nav/Step'))
 
 // 表单
-const FormBaseView = AsyncLoadable(() => import(/* webpackChunkName: 'formBase' */ '@/views/FormView/FormBaseView'));
-const FormStepView = AsyncLoadable(() => import(/* webpackChunkName: 'formStep' */ '@/views/FormView/FormStepView'));
+const FormBaseView = AsyncLoadable(() => import(/* webpackChunkName: 'formBase' */ '@/views/Form/FormBase'))
+const FormStepView = AsyncLoadable(() => import(/* webpackChunkName: 'formStep' */ '@/views/Form/FormStep'))
 
 // 展示
-const TableView = AsyncLoadable(() => import(/* webpackChunkName: 'table' */ '@/views/ShowView/Table'));
-const CollapseView = AsyncLoadable(() => import(/* webpackChunkName: 'collapse' */ '@/views/ShowView/Collapse'));
-const TreeView = AsyncLoadable(() => import(/* webpackChunkName: 'tree' */ '@/views/ShowView/Tree'));
-const TabsView = AsyncLoadable(() => import(/* webpackChunkName: 'tabs' */ '@/views/ShowView/Tabs'));
+const TableView = AsyncLoadable(() => import(/* webpackChunkName: 'table' */ '@/views/Show/Table'))
+const CollapseView = AsyncLoadable(() => import(/* webpackChunkName: 'collapse' */ '@/views/Show/Collapse'))
+const TreeView = AsyncLoadable(() => import(/* webpackChunkName: 'tree' */ '@/views/Show/Tree'))
+const TabsView = AsyncLoadable(() => import(/* webpackChunkName: 'tabs' */ '@/views/Show/Tabs'))
 
 // 其它
-const ProgressView = AsyncLoadable(() => import(/* webpackChunkName: 'progress' */ '@/views/Others/Progress'));
-const AnimationView = AsyncLoadable(() => import(/* webpackChunkName: 'animation' */ '@/views/Others/Animation'));
-const EditorView = AsyncLoadable(() => import(/* webpackChunkName: 'editor' */ '@/views/Others/Editor'));
-const UploadView = AsyncLoadable(() => import(/* webpackChunkName: 'upload' */ '@/views/Others/Upload'));
+const ProgressView = AsyncLoadable(() => import(/* webpackChunkName: 'progress' */ '@/views/Others/Progress'))
+const AnimationView = AsyncLoadable(() => import(/* webpackChunkName: 'animation' */ '@/views/Others/Animation'))
+const EditorView = AsyncLoadable(() => import(/* webpackChunkName: 'editor' */ '@/views/Others/Editor'))
+const UploadView = AsyncLoadable(() => import(/* webpackChunkName: 'upload' */ '@/views/Others/Upload'))
 
 // 多级导航
-const Three = AsyncLoadable(() => import(/* webpackChunkName: 'three' */ '@/views/TestView/SubView'));
+const Three = AsyncLoadable(() => import(/* webpackChunkName: 'three' */ '@/views/Test/SubView'))
 
 //关于
-const About = AsyncLoadable(() => import(/* webpackChunkName: 'about' */ '@/views/About'));
+const About = AsyncLoadable(() => import(/* webpackChunkName: 'about' */ '@/views/About'))
 
 // 示例
-const Example = AsyncLoadable(() => import(/* webpackChunkName: 'example' */ "@/views/TestView/Example"));
+const Example = AsyncLoadable(() => import(/* webpackChunkName: 'example' */ '@/views/Test/Example'))
 
 const routes = [
     { path: '/index', exact: true, name: 'Index', component: Index, auth: [1] },
@@ -56,7 +56,7 @@ const routes = [
     { path: '/others/upload', exact: false, name: '上传', component: UploadView, auth: [1] },
     { path: '/one/two/three', exact: false, name: '三级', component: Three },
     { path: '/about', exact: false, name: '关于', component: About, auth: [1] },
-    { path: "/example", exact: false, name: "示例", component: Example, auth: [1] }
+    { path: '/example', exact: false, name: '示例', component: Example, auth: [1] }
 ]
 
-export default routes;
+export default routes
