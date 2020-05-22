@@ -10,8 +10,8 @@ module.exports = {
             options: {
                 /* customizeTheme 和 customizeThemeLessPath 任选其一 */
                 customizeTheme: {
-                    "@primary-color": "#1DA57A",
-                    "@link-color": "#1DA57A"
+                    "@primary-color": "#7546c9",
+                    "@link-color": "#7546c9"
                 },
                 // customizeThemeLessPath: path.join(__dirname, "src/style/theme.less"),
             }
