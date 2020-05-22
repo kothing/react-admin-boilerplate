@@ -2,7 +2,7 @@ import React from 'react'
 import { Layout, Divider, Menu, Dropdown, Row, Col, message, Button } from 'antd'
 import { DownOutlined, UserOutlined } from '@ant-design/icons'
 import WebBreadcrumb from '@/components/WebBreadcrumb'
-import '@/style/view-style/dropdown.scss'
+import '@/style/view-style/dropdown.less'
 
 const { SubMenu } = Menu
 

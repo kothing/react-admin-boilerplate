@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import WebBreadcrumb from '@/components/WebBreadcrumb'
 import { Layout, Divider, Row, Col, Tag, Table, Button, Anchor } from 'antd'
-import '@/style/view-style/table.scss'
+import '@/style/view-style/table.less'
 
 const { Column } = Table
 const { Link } = Anchor

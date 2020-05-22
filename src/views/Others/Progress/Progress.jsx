@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import WebBreadcrumb from '@/components/WebBreadcrumb'
-import { Layout, Row, Col, Progress, Divider, Button } from 'antd';
-import { PlusOutlined, MinusOutlined } from '@ant-design/icons';
-import '@/style/view-style/progress.scss'
+import { Layout, Row, Col, Progress, Divider, Button } from 'antd'
+import { PlusOutlined, MinusOutlined } from '@ant-design/icons'
+import '@/style/view-style/progress.less'
 
 const ButtonGroup = Button.Group
 
@@ -61,4 +61,4 @@ const DrawerView = () => {
     )
 }
 
-export default DrawerView;
+export default DrawerView

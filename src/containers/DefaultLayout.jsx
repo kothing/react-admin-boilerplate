@@ -5,7 +5,7 @@ import echarts from 'echarts/lib/echarts'
 import routes from '@/routes'
 import menus from '@/routes/menus'
 import avatar from '@/assets/images/user.png'
-import '@/style/layout.scss'
+import '@/style/layout.less'
 
 import AppHeader from './AppHeader.jsx'
 import AppAside from './AppAside.jsx'

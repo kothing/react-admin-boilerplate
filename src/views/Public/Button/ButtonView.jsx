@@ -9,7 +9,7 @@ import {
     CloudDownloadOutlined,
     PoweroffOutlined
 } from '@ant-design/icons'
-import '@/style/view-style/button.scss'
+import '@/style/view-style/button.less'
 
 const ButtonGroup = Button.Group
 

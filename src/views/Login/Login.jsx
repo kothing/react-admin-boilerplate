@@ -1,53 +1,53 @@
-import React, { useState, useEffect } from 'react';
-import { withRouter } from 'react-router-dom';
-import { Layout, Input, Form, Button, Divider, message, notification } from 'antd';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import React, { useState, useEffect } from 'react'
+import { withRouter } from 'react-router-dom'
+import { Layout, Input, Form, Button, Divider, message, notification } from 'antd'
+import { UserOutlined, LockOutlined } from '@ant-design/icons'
 // import axios from '@/api'
 // import { API } from '@/api/config'
-import '@/style/view-style/login.scss'
+import '@/style/view-style/login.less'
 
 const Login = props => {
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(false)
 
     const handleSubmitFinish = values => {
-        console.log('Success:', values);
-            // let { username, password } = values
-            // axios
-            //     .post(`${API}/login`, { username, password })
-            //     .then(res => {
-            //         if (res.data.code === 0) {
-            //             localStorage.setItem('user', JSON.stringify(res.data.data.user))
-            //             localStorage.setItem('token', res.data.data.token)
-            //             props.history.push('/')
-            //             message.success('登录成功!')
-            //         } else {
-            //             message.error('登录失败!')
-            //         }
-            //     })
-            //     .catch(err => {
-            //         message.error('登录失败!')
-            //     })
+        console.log('Success:', values)
+        // let { username, password } = values
+        // axios
+        //     .post(`${API}/login`, { username, password })
+        //     .then(res => {
+        //         if (res.data.code === 0) {
+        //             localStorage.setItem('user', JSON.stringify(res.data.data.user))
+        //             localStorage.setItem('token', res.data.data.token)
+        //             props.history.push('/')
+        //             message.success('登录成功!')
+        //         } else {
+        //             message.error('登录失败!')
+        //         }
+        //     })
+        //     .catch(err => {
+        //         message.error('登录失败!')
+        //     })
 
-            // 这里可以做权限校验 模拟接口返回用户权限标识
-            switch (values.username) {
-                case 'admin':
-                    values.auth = 0
-                    break
-                default:
-                    values.auth = 1
-            }
+        // 这里可以做权限校验 模拟接口返回用户权限标识
+        switch (values.username) {
+            case 'admin':
+                values.auth = 0
+                break
+            default:
+                values.auth = 1
+        }
 
-            localStorage.setItem('user', JSON.stringify(values))
-            setLoading(true)
-            setTimeout(() => {
-                message.success('登录成功!')
-                props.history.push('/')
-            }, 2000);
-    };
-    
+        localStorage.setItem('user', JSON.stringify(values))
+        setLoading(true)
+        setTimeout(() => {
+            message.success('登录成功!')
+            props.history.push('/')
+        }, 2000)
+    }
+
     const handleSubmitFinishFailed = errorInfo => {
-        console.log('Failed:', errorInfo);
-    };
+        console.log('Failed:', errorInfo)
+    }
 
     useEffect(() => {
         notification.open({
@@ -66,29 +66,21 @@ const Login = props => {
                 <div className='login-form'>
                     <h3>后台管理系统</h3>
                     <Divider />
-                    <Form
-                        onFinish={handleSubmitFinish}
-                        onFinishFailed={handleSubmitFinishFailed}
-                    >
+                    <Form onFinish={handleSubmitFinish} onFinishFailed={handleSubmitFinishFailed}>
                         <Form.Item
                             // label="Username"
-                            name="username"
-                            rules={[{ required: true, message: '请输入用户名' }]}
-                        >
-                            <Input
-                                placeholder='用户名'
-                                prefix={<UserOutlined className="site-form-item-icon" />}
-                            />
+                            name='username'
+                            rules={[{ required: true, message: '请输入用户名' }]}>
+                            <Input placeholder='用户名' prefix={<UserOutlined className='site-form-item-icon' />} />
                         </Form.Item>
                         <Form.Item
                             // label="Password"
-                            name="password"
-                            rules={[{ required: true, message: '请输入密码' }]}
-                        >
+                            name='password'
+                            rules={[{ required: true, message: '请输入密码' }]}>
                             <Input.Password
-                                type="password"
-                                placeholder="密码"
-                                prefix={<LockOutlined className="site-form-item-icon" />}
+                                type='password'
+                                placeholder='密码'
+                                prefix={<LockOutlined className='site-form-item-icon' />}
                             />
                         </Form.Item>
                         <Form.Item>
@@ -103,4 +95,4 @@ const Login = props => {
     )
 }
 
-export default withRouter(Login);
+export default withRouter(Login)

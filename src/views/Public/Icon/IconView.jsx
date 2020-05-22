@@ -88,7 +88,7 @@ import Icon, {
     FacebookOutlined
 } from '@ant-design/icons'
 import WebBreadcrumb from '@/components/WebBreadcrumb'
-import '@/style/view-style/icon.scss'
+import '@/style/view-style/icon.less'
 
 const HeartSvg = () => (
     <svg width='1em' height='1em' fill='currentColor' viewBox='0 0 1024 1024'>

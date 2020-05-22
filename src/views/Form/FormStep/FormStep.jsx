@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import WebBreadcrumb from '@/components/WebBreadcrumb'
 import { Layout, Divider, Row, Col, Steps, Button, Form, Input, Select, Alert, Result } from 'antd'
-import '@/style/view-style/form.scss'
+import '@/style/view-style/form.less'
 
 const { Step } = Steps
 const { Option } = Select

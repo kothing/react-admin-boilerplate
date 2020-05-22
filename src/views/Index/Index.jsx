@@ -1,13 +1,19 @@
-import React from 'react';
-import { Layout, Row, Col, Divider } from 'antd';
-import { WechatOutlined, QqOutlined, DingdingOutlined, WeiboCircleOutlined, FullscreenOutlined } from '@ant-design/icons';
-import screenfull from 'screenfull';
-import '@/style/view-style/index.scss';
-import BarEcharts from './bar.jsx';
-import PieEcharts from './pie.jsx';
-import LineEcharts from './line.jsx';
-import ScatterEcharts from './scatter.jsx';
-import PictorialBarEcharts from './pictorialBar.jsx';
+import React from 'react'
+import { Layout, Row, Col, Divider } from 'antd'
+import {
+    WechatOutlined,
+    QqOutlined,
+    DingdingOutlined,
+    WeiboCircleOutlined,
+    FullscreenOutlined
+} from '@ant-design/icons'
+import screenfull from 'screenfull'
+import '@/style/view-style/index.less'
+import BarEcharts from './bar.jsx'
+import PieEcharts from './pie.jsx'
+import LineEcharts from './line.jsx'
+import ScatterEcharts from './scatter.jsx'
+import PictorialBarEcharts from './pictorialBar.jsx'
 
 const Index = () => {
     const fullToggle = () => {
@@ -20,7 +26,7 @@ const Index = () => {
             <Row gutter={24} className='index-header'>
                 <Col span={6}>
                     <div className='base-style wechat'>
-                        <WechatOutlined className='icon-style'/>
+                        <WechatOutlined className='icon-style' />
                         <div>
                             <span>999</span>
                             <div>微信</div>
@@ -60,7 +66,7 @@ const Index = () => {
                     <div className='base-style'>
                         <div className='bar-header'>
                             <div>图形全屏展示</div>
-                            <FullscreenOutlined style={{ cursor: 'pointer' }} onClick={fullToggle}/>
+                            <FullscreenOutlined style={{ cursor: 'pointer' }} onClick={fullToggle} />
                         </div>
                         <Divider />
                         <BarEcharts />
@@ -93,4 +99,4 @@ const Index = () => {
     )
 }
 
-export default Index;
+export default Index

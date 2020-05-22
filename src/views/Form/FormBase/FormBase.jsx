@@ -23,7 +23,7 @@ import {
     message
 } from 'antd'
 import { UserOutlined, LockOutlined, QuestionCircleOutlined } from '@ant-design/icons'
-import '@/style/view-style/form.scss'
+import '@/style/view-style/form.less'
 
 const { Option } = Select
 

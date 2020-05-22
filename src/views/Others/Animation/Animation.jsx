@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Layout, Divider, Row, Col, Button, Tabs } from 'antd'
 import WebBreadcrumb from '@/components/WebBreadcrumb'
-import '@/style/view-style/animation.scss'
+import '@/style/view-style/animation.less'
 
 const { TabPane } = Tabs
 const typeIn = [

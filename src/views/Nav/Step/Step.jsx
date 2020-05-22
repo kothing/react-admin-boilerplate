@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Layout, Divider, Row, Col, Steps, Button, message } from 'antd'
 import { UserOutlined, SolutionOutlined, LoadingOutlined, SmileOutlined } from '@ant-design/icons'
 import WebBreadcrumb from '@/components/WebBreadcrumb'
-import '@/style/view-style/step.scss'
+import '@/style/view-style/step.less'
 
 const { Step } = Steps
 

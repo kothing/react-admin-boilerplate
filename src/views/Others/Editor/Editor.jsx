@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import BraftEditor from 'braft-editor'
 import WebBreadcrumb from '@/components/WebBreadcrumb'
 import { Layout, Divider } from 'antd'
-import '@/style/view-style/editor.scss'
+import '@/style/view-style/editor.less'
 import 'braft-editor/dist/index.css'
 
 const EditorView = () => {
