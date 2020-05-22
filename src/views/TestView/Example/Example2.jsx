@@ -119,9 +119,9 @@ const Example2 = () => {
   }
 
   return (
-    <>
+    <div className="base-style">
       <TodoList />
-    </>
+    </div>
   );
 };
 
