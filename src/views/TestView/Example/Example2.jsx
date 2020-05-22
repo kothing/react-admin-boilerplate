@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button } from "antd";
 import { createStore, useStore } from "@/utils/React-Storage-Factory";
 import axios from "@/api";
 
@@ -11,18 +11,23 @@ createStore(
   //Store state
   {
     idCount: 0,
-    todos: [{ id: 0, text: "buy milk" }]
+    todos: [{ id: 0, title: "buy milk" }]
   },
 
   //Reducer
   (state, action) => {
     // when a reducer is being used, you must return a new state object
     switch (action.type) {
+      case "init":
+        return {
+          ...state,
+          todos: action.payload,
+        };
       case "create":
         const id = ++state.idCount;
         return {
           ...state,
-          todos: [...state.todos, { id, text: action.payload }]
+          todos: [...state.todos, { id, title: action.payload }]
         };
       case "delete":
         return {
@@ -36,28 +41,37 @@ createStore(
 );
 
 const Example2 = () => {
-  useEffect(() => {
-    axios.get("/todolist").then(res => {
-      console.log(res);
-    }).catch(err => {
-      console.error(err);
-    });
-  });
 
   //TodoList
   function TodoList() {
     // Grab the correct store by specifying its namespace
     const [state, dispatch] = useStore("todoList");
     const [form] = Form.useForm();
+
+    useEffect(() => {
+      async function ts () {
+        let d = await axios.get("/todos").then(res => {
+          console.log(res.data);
+          return res.data.slice(-10, -1);
+        }).catch(err => {
+          console.error(err);
+        });
+        dispatch({
+          type: "init",
+          payload: d
+        });
+      };
+      ts();
+    }, [dispatch]);
     
     const onFinish = values => {
-      console.log('Success:', values);
+      console.log("Success:", values);
       dispatch({ type: "create", payload: values.todo });
       form.resetFields();
     };
 
     const onFinishFailed = errorInfo => {
-      console.log('Failed:', errorInfo);
+      console.log("Failed:", errorInfo);
     };
     
     const deleteTodo = id => dispatch({ type: "delete", payload: id });
@@ -75,7 +89,7 @@ const Example2 = () => {
           <Form.Item
             label="Todo"
             name="todo"
-            rules={[{ required: true, message: 'Please input your content!' }]}
+            rules={[{ required: true, message: "Please input your content!" }]}
           >
             <Input />
           </Form.Item>
@@ -89,7 +103,7 @@ const Example2 = () => {
         <ul>
           {state.todos.map(todo => (
             <li key={todo.id}>
-              <span>{todo.text}</span>{" "}
+              <span>{todo.title}</span>{" "}
               <button
                 onClick={() => deleteTodo(todo.id)}
                 type="button"
