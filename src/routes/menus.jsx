@@ -1,5 +1,15 @@
-import React from 'react';
-import { HomeOutlined, AppstoreOutlined, CompassOutlined, FormOutlined, PieChartOutlined, PaperClipOutlined, BarsOutlined, UserOutlined, FundViewOutlined } from '@ant-design/icons';
+import React from 'react'
+import {
+    HomeOutlined,
+    AppstoreOutlined,
+    CompassOutlined,
+    FormOutlined,
+    PieChartOutlined,
+    PaperClipOutlined,
+    BarsOutlined,
+    UserOutlined,
+    FundViewOutlined
+} from '@ant-design/icons'
 
 const menus = [
     {
@@ -13,7 +23,10 @@ const menus = [
         key: '/public',
         icon: <AppstoreOutlined />,
         auth: [1],
-        subs: [{ title: '按钮', key: '/public/button', icon: '' }, { title: '图标', key: '/public/icon', icon: '' }]
+        subs: [
+            { title: '按钮', key: '/public/button', icon: '' },
+            { title: '图标', key: '/public/icon', icon: '' }
+        ]
     },
     {
         title: '导航',
@@ -61,14 +74,14 @@ const menus = [
     },
     {
         title: '多级导航',
-        key: '/one',
+        key: '/level1',
         icon: <BarsOutlined />,
         subs: [
             {
                 title: '二级',
-                key: '/one/two',
+                key: '/level1/level2',
                 icon: '',
-                subs: [{ title: '三级', key: '/one/two/three', icon: '' }]
+                subs: [{ title: '三级', key: '/level1/level2/level3', icon: '' }]
             }
         ]
     },
@@ -78,12 +91,17 @@ const menus = [
         icon: <UserOutlined />,
         auth: [1]
     },
-  {
-    title: "示例",
-    key: "/example",
-    icon: <FundViewOutlined />,
-    auth: [1]
-  }
+    {
+        title: '示例',
+        key: '/test',
+        icon: <FundViewOutlined />,
+        auth: [1],
+        subs: [
+            { title: '示例1', key: '/test/example1', icon: '' },
+            { title: '示例2', key: '/test/example2', icon: '' }
+            // { title: '示例3', key: '/test/example3', icon: '' },
+        ]
+    }
 ]
 
-export default menus;
+export default menus

@@ -29,13 +29,15 @@ const EditorView = AsyncLoadable(() => import(/* webpackChunkName: 'editor' */ '
 const UploadView = AsyncLoadable(() => import(/* webpackChunkName: 'upload' */ '@/views/Others/Upload'))
 
 // 多级导航
-const Three = AsyncLoadable(() => import(/* webpackChunkName: 'three' */ '@/views/Test/SubView'))
+const Multilevel = AsyncLoadable(() => import(/* webpackChunkName: 'three' */ '@/views/SubLevel'))
 
 //关于
 const About = AsyncLoadable(() => import(/* webpackChunkName: 'about' */ '@/views/About'))
 
 // 示例
-const Example = AsyncLoadable(() => import(/* webpackChunkName: 'example' */ '@/views/Test/Example'))
+const Example1 = AsyncLoadable(() => import(/* webpackChunkName: 'example1' */ '@/views/Test/Example1'))
+const Example2 = AsyncLoadable(() => import(/* webpackChunkName: 'example2' */ '@/views/Test/Example2/index'))
+// const Example3 = AsyncLoadable(() => import(/* webpackChunkName: 'example3' */ '@/views/Test/Example3'))
 
 const routes = [
     { path: '/index', exact: true, name: 'Index', component: Index, auth: [1] },
@@ -54,9 +56,11 @@ const routes = [
     { path: '/others/animation', exact: false, name: '动画', component: AnimationView, auth: [1] },
     { path: '/others/editor', exact: false, name: '富文本', component: EditorView, auth: [1] },
     { path: '/others/upload', exact: false, name: '上传', component: UploadView, auth: [1] },
-    { path: '/one/two/three', exact: false, name: '三级', component: Three },
+    { path: '/level1/level2/level3', exact: false, name: '三级', component: Multilevel },
     { path: '/about', exact: false, name: '关于', component: About, auth: [1] },
-    { path: '/example', exact: false, name: '示例', component: Example, auth: [1] }
+    { path: '/test/example1', exact: false, name: '示例1', component: Example1, auth: [1] },
+    { path: '/test/example2', exact: false, name: '示例2', component: Example2, auth: [1] }
+    // { path: '/test/example3', exact: false, name: '示例3', component: Example3, auth: [1] }
 ]
 
 export default routes
