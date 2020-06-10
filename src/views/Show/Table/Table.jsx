@@ -270,10 +270,10 @@ class TableView extends Component {
                         <div className='base-style'>
                             <h3 id='basic'>基础表格</h3>
                             <Anchor className='toc-affix'>
-                                <Link href='#/show/table/#basic' title='基础表格' />
-                                <Link href='#/show/table/#JSX' title='JSX表格' />
-                                <Link href='#/show/table/#checked' title='可选表格' />
-                                <Link href='#/show/table/#sort' title='可筛选排序表格' />
+                                <Link href='#basic' title='基础表格' />
+                                <Link href='#JSX' title='JSX表格' />
+                                <Link href='#checked' title='可选表格' />
+                                <Link href='#sort' title='可筛选排序表格' />
                             </Anchor>
                             <Divider />
                             <Table1 />
