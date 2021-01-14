@@ -6,7 +6,7 @@
         "@craco/craco": "^5.6.4",
         "animate.css": "^3.7.2",
         "antd": "^4.2.4",
-        "axios": "^0.19.0",
+        "axios": "^0.21.1"
         "braft-editor": "^2.3.8",
         "craco-alias": "^2.1.1",
         "craco-antd": "^1.14.1",
