@@ -9,7 +9,7 @@
         "axios": "^0.21.1",
         "braft-editor": "^2.3.8",
         "craco-alias": "^2.1.1",
-        "craco-antd": "^2.0.0",
+        "craco-antd": "^1.19.0",
         "echarts": "^4.4.0",
         "eslint-plugin-react-hooks": "^2.3.0",
         "react": "^16.13.1",
