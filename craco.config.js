@@ -3,6 +3,7 @@
 // const CracoAntDesignPlugin = require("craco-antd");
 const CracoLessPlugin = require('craco-less');
 const CracoAlias = require("craco-alias");
+const { CracoAliasPlugin, configPaths } = require('react-app-rewire-alias');
 
 module.exports = {
     plugins: [
@@ -29,14 +30,23 @@ module.exports = {
           },
         },
         {
-            plugin: CracoAlias,
-            options: {
-                source: "options",
-                baseUrl: "./",
-                aliases: {
-                    "@": "./src",
-                }
+          plugin: CracoAliasPlugin,
+          options: { alias: {
+            "baseUrl": "./",
+            "paths": {
+              "@": "./src",
             }
-        }
+          }}
+        },
+//         {
+//             plugin: CracoAlias,
+//             options: {
+//                 source: "options",
+//                 baseUrl: "./",
+//                 aliases: {
+//                     "@": "./src",
+//                 }
+//             }
+//         }
     ],
 };
