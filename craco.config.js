@@ -1,23 +1,15 @@
 
-// const path = require('path');
-// const CracoAntDesignPlugin = require("craco-antd");
+const path = require('path');
 const CracoLessPlugin = require('craco-less');
-const CracoAlias = require("craco-alias");
-const { CracoAliasPlugin, configPaths } = require('react-app-rewire-alias');
+const resolve = dir => path.resolve(__dirname, dir);
 
 module.exports = {
+    webpack: {
+        alias:{
+            '@': resolve('src'),
+        }
+    },
     plugins: [
-//         {
-//             plugin: CracoAntDesignPlugin,
-//             options: {
-//                 /* customizeTheme 和 customizeThemeLessPath 任选其一 */
-//                 customizeTheme: {
-//                     "@primary-color": "#7546c9",
-//                     "@link-color": "#7546c9"
-//                 },
-//                 // customizeThemeLessPath: path.join(__dirname, "src/style/theme.less"),
-//             }
-//         },
         {
           plugin: CracoLessPlugin,
           options: {
@@ -29,24 +21,5 @@ module.exports = {
             },
           },
         },
-        {
-          plugin: CracoAliasPlugin,
-          options: { alias: {
-            "baseUrl": "./",
-            "paths": {
-              "@": "./src",
-            }
-          }}
-        },
-//         {
-//             plugin: CracoAlias,
-//             options: {
-//                 source: "options",
-//                 baseUrl: "./",
-//                 aliases: {
-//                     "@": "./src",
-//                 }
-//             }
-//         }
     ],
 };
