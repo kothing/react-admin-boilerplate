@@ -1,51 +1,174 @@
-import React, { useState } from 'react'
-import { Layout, Divider, Row, Col, Menu, Button, Switch } from 'antd'
+import React, { useState } from "react";
+import { Layout, Divider, Row, Col, Menu, Button, Switch } from "antd";
 import {
     AppstoreOutlined,
     MailOutlined,
+    AppstoreAddOutlined,
     SettingOutlined,
     MenuFoldOutlined,
     MenuUnfoldOutlined,
     PieChartOutlined,
-    DesktopOutlined,
-    InboxOutlined,
-    CalendarOutlined
-} from '@ant-design/icons'
-import WebBreadcrumb from '@/components/WebBreadcrumb'
-
-const { SubMenu } = Menu
+    DesktopOutlined
+} from "@ant-design/icons";
+import WebBreadcrumb from "@/components/WebBreadcrumb";
 
 const MenuView = () => {
-    const [current, setCurrent] = useState('mail')
-    const [collapsed, setCollapsed] = useState(false)
-    const [openKeys, setOpenkeys] = useState(['sub1'])
-    const [mode, setMode] = useState('inline')
-    const [theme, setTheme] = useState('light')
+    const [current, setCurrent] = useState("mail");
+    const [collapsed, setCollapsed] = useState(false);
+    const [openKeys, setOpenkeys] = useState(["sub1"]);
+    const [mode, setMode] = useState("inline");
+    const [theme, setTheme] = useState("light");
 
-    const rootSubmenuKeys = ['sub1', 'sub2', 'sub4']
+    const rootSubmenuKeys = ["sub1", "sub2", "sub4"];
 
     const handleClick = e => {
-        console.log('click ', e)
-        setCurrent(e.key)
-    }
+        console.log("click ", e);
+        setCurrent(e.key);
+    };
 
     const onOpenChange = keys => {
-        const latestOpenKey = keys.find(key => openKeys.indexOf(key) === -1)
+        const latestOpenKey = keys.find(key => openKeys.indexOf(key) === -1);
         setOpenkeys(prevState => {
             if (rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
-                return openKeys
+                return openKeys;
             } else {
-                return latestOpenKey ? [latestOpenKey] : []
+                return latestOpenKey ? [latestOpenKey] : [];
             }
-        })
-    }
+        });
+    };
+
+    const getItem = (label, key, icon, children, type) => {
+        return {
+            key,
+            icon,
+            children,
+            label,
+            type
+        };
+    };
+
+    const items = [
+        getItem("Navigation One", "sub1", <MailOutlined />, [
+            getItem("Item 1", "g1", null, [getItem("Option 1", "1"), getItem("Option 2", "2")], "group"),
+            getItem("Item 2", "g2", null, [getItem("Option 3", "3"), getItem("Option 4", "4")], "group")
+        ]),
+        getItem("Navigation Two", "sub2", <AppstoreOutlined />, [
+            getItem("Option 5", "5"),
+            getItem("Option 6", "6"),
+            getItem("Submenu", "sub3", null, [getItem("Option 7", "7"), getItem("Option 8", "8")])
+        ]),
+        getItem("Navigation Three", "sub4", <SettingOutlined />, [
+            getItem("Option 9", "9"),
+            getItem("Option 10", "10"),
+            getItem("Option 11", "11"),
+            getItem("Option 12", "12")
+        ])
+    ];
+
+    const items2 = [
+        getItem("Navigation One", "sub1", <MailOutlined />, [
+            getItem("Option 1", "1"),
+            getItem("Option 2", "2"),
+            getItem("Option 3", "3"),
+            getItem("Option 4", "4")
+        ]),
+        getItem("Navigation Two", "sub2", <AppstoreOutlined />, [
+            getItem("Option 5", "5"),
+            getItem("Option 6", "6"),
+            getItem("Submenu", "sub3", null, [getItem("Option 7", "7"), getItem("Option 8", "8")])
+        ]),
+        getItem("Navigation Three", "sub4", <SettingOutlined />, [
+            getItem("Option 9", "9"),
+            getItem("Option 10", "10"),
+            getItem("Option 11", "11"),
+            getItem("Option 12", "12")
+        ])
+    ];
+
+    const items3 = [
+        {
+            label: "Option One",
+            key: "mail",
+            icon: <MailOutlined />
+        },
+        {
+            label: "Option Two",
+            key: "app",
+            icon: <AppstoreOutlined />
+        },
+        {
+            label: "Option Tree",
+            key: "store",
+            icon: <AppstoreAddOutlined />
+        },
+        {
+            label: "Navigation Three",
+            key: "SubMenu",
+            icon: <SettingOutlined />,
+            children: [
+                {
+                    label: "Option 1",
+                    key: "setting:1",
+                    icon: <PieChartOutlined />
+                },
+                {
+                    label: "Option 2",
+                    key: "setting:2",
+                    icon: <DesktopOutlined />
+                },
+                {
+                    label: "Option 3",
+                    key: "setting:3"
+                },
+                {
+                    label: "Option 4",
+                    key: "setting:4"
+                }
+            ]
+        },
+        {
+            label: "Navigation Four",
+            key: "SubMenu2",
+            icon: <SettingOutlined />,
+            children: [
+                {
+                    type: "group",
+                    label: "Item 11",
+                    children: [
+                        {
+                            label: "Option 11",
+                            key: "setting:11"
+                        },
+                        {
+                            label: "Option 12",
+                            key: "setting:12"
+                        }
+                    ]
+                },
+                {
+                    type: "group",
+                    label: "Item 22",
+                    children: [
+                        {
+                            label: "Option 23",
+                            key: "setting:23"
+                        },
+                        {
+                            label: "Option 24",
+                            key: "setting:24"
+                        }
+                    ]
+                }
+            ]
+        }
+    ];
 
     return (
-        <Layout className='animated fadeIn'>
+        <Layout className="animated fadeIn">
             <div>
-                <WebBreadcrumb arr={['导航', '下拉菜单']}></WebBreadcrumb>
+                <WebBreadcrumb arr={["导航", "下拉菜单"]}></WebBreadcrumb>
             </div>
-            <div className='base-style'>
+            <div className="base-style">
                 <h3>何时使用</h3>
                 <Divider />
                 <p>
@@ -54,259 +177,137 @@ const MenuView = () => {
             </div>
             <Row gutter={8}>
                 <Col span={24}>
-                    <div className='base-style'>
-                        <Divider orientation='left'>顶部导航</Divider>
-                        <Menu onClick={handleClick} selectedKeys={[current]} mode='horizontal'>
-                            <Menu.Item key='mail'>
-                                <MailOutlined />
-                                Navigation One
-                            </Menu.Item>
-                            <Menu.Item key='app' disabled>
-                                <AppstoreOutlined />
-                                Navigation Two
-                            </Menu.Item>
-                            <SubMenu
-                                title={
-                                    <span className='submenu-title-wrapper'>
-                                        <SettingOutlined />
-                                        Navigation Three - Submenu
-                                    </span>
-                                }>
-                                <Menu.ItemGroup title='Item 1'>
-                                    <Menu.Item key='setting:1'>Option 1</Menu.Item>
-                                    <Menu.Item key='setting:2'>Option 2</Menu.Item>
-                                </Menu.ItemGroup>
-                                <Menu.ItemGroup title='Item 2'>
-                                    <Menu.Item key='setting:3'>Option 3</Menu.Item>
-                                    <Menu.Item key='setting:4'>Option 4</Menu.Item>
-                                </Menu.ItemGroup>
-                            </SubMenu>
-                            <Menu.Item key='alipay'>
-                                <Button type='link'>Navigation Four - Link</Button>
-                            </Menu.Item>
-                        </Menu>
+                    <div className="base-style">
+                        <Divider orientation="left">顶部导航</Divider>
+                        <Menu
+                            onClick={handleClick}
+                            selectedKeys={[current]}
+                            mode="horizontal"
+                            items={[
+                                {
+                                    label: "Navigation One",
+                                    key: "mail",
+                                    icon: <MailOutlined />
+                                },
+                                {
+                                    label: "Navigation Two",
+                                    key: "app",
+                                    icon: <AppstoreOutlined />,
+                                    disabled: true
+                                },
+                                {
+                                    label: "Navigation Three - Submenu",
+                                    key: "SubMenu",
+                                    icon: <SettingOutlined />,
+                                    children: [
+                                        {
+                                            type: "group",
+                                            label: "Item 1",
+                                            children: [
+                                                {
+                                                    label: "Option 1",
+                                                    key: "setting:1"
+                                                },
+                                                {
+                                                    label: "Option 2",
+                                                    key: "setting:2"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            type: "group",
+                                            label: "Item 2",
+                                            children: [
+                                                {
+                                                    label: "Option 3",
+                                                    key: "setting:3"
+                                                },
+                                                {
+                                                    label: "Option 4",
+                                                    key: "setting:4"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    label: (
+                                        <a href="https://ant.design" target="_blank" rel="noopener noreferrer">
+                                            Navigation Four - Link
+                                        </a>
+                                    ),
+                                    key: "alipay"
+                                }
+                            ]}
+                        />
                     </div>
                 </Col>
                 <Col span={12}>
-                    <div className='base-style'>
+                    <div className="base-style">
                         <Divider>内嵌菜单</Divider>
                         <Menu
                             onClick={handleClick}
                             style={{ width: 256 }}
-                            defaultSelectedKeys={['1']}
-                            defaultOpenKeys={['sub1']}
-                            mode='inline'>
-                            <SubMenu
-                                key='sub1'
-                                title={
-                                    <span>
-                                        <MailOutlined />
-                                        <span>Navigation One</span>
-                                    </span>
-                                }>
-                                <Menu.ItemGroup key='g1' title='Item 1'>
-                                    <Menu.Item key='1'>Option 1</Menu.Item>
-                                    <Menu.Item key='2'>Option 2</Menu.Item>
-                                </Menu.ItemGroup>
-                                <Menu.ItemGroup key='g2' title='Item 2'>
-                                    <Menu.Item key='3'>Option 3</Menu.Item>
-                                    <Menu.Item key='4'>Option 4</Menu.Item>
-                                </Menu.ItemGroup>
-                            </SubMenu>
-                            <SubMenu
-                                key='sub2'
-                                title={
-                                    <span>
-                                        <AppstoreOutlined />
-                                        <span>Navigation Two</span>
-                                    </span>
-                                }>
-                                <Menu.Item key='5'>Option 5</Menu.Item>
-                                <Menu.Item key='6'>Option 6</Menu.Item>
-                                <SubMenu key='sub3' title='Submenu'>
-                                    <Menu.Item key='7'>Option 7</Menu.Item>
-                                    <Menu.Item key='8'>Option 8</Menu.Item>
-                                </SubMenu>
-                            </SubMenu>
-                            <SubMenu
-                                key='sub4'
-                                title={
-                                    <span>
-                                        <SettingOutlined />
-                                        <span>Navigation Three</span>
-                                    </span>
-                                }>
-                                <Menu.Item key='9'>Option 9</Menu.Item>
-                                <Menu.Item key='10'>Option 10</Menu.Item>
-                                <Menu.Item key='11'>Option 11</Menu.Item>
-                                <Menu.Item key='12'>Option 12</Menu.Item>
-                            </SubMenu>
-                        </Menu>
+                            defaultSelectedKeys={["1"]}
+                            defaultOpenKeys={["sub1"]}
+                            mode="inline"
+                            items={items}
+                        />
                     </div>
-                    <div className='base-style'>
+                    <div className="base-style">
                         <Divider>只展开当前父级菜单</Divider>
-                        <Menu mode='inline' openKeys={openKeys} onOpenChange={onOpenChange} style={{ width: 256 }}>
-                            <SubMenu
-                                key='sub1'
-                                title={
-                                    <span>
-                                        <MailOutlined />
-                                        <span>Navigation One</span>
-                                    </span>
-                                }>
-                                <Menu.Item key='1'>Option 1</Menu.Item>
-                                <Menu.Item key='2'>Option 2</Menu.Item>
-                                <Menu.Item key='3'>Option 3</Menu.Item>
-                                <Menu.Item key='4'>Option 4</Menu.Item>
-                            </SubMenu>
-                            <SubMenu
-                                key='sub2'
-                                title={
-                                    <span>
-                                        <AppstoreOutlined />
-                                        <span>Navigation Two</span>
-                                    </span>
-                                }>
-                                <Menu.Item key='5'>Option 5</Menu.Item>
-                                <Menu.Item key='6'>Option 6</Menu.Item>
-                                <SubMenu key='sub3' title='Submenu'>
-                                    <Menu.Item key='7'>Option 7</Menu.Item>
-                                    <Menu.Item key='8'>Option 8</Menu.Item>
-                                </SubMenu>
-                            </SubMenu>
-                            <SubMenu
-                                key='sub4'
-                                title={
-                                    <span>
-                                        <SettingOutlined />
-                                        <span>Navigation Three</span>
-                                    </span>
-                                }>
-                                <Menu.Item key='9'>Option 9</Menu.Item>
-                                <Menu.Item key='10'>Option 10</Menu.Item>
-                                <Menu.Item key='11'>Option 11</Menu.Item>
-                                <Menu.Item key='12'>Option 12</Menu.Item>
-                            </SubMenu>
-                        </Menu>
+                        <Menu
+                            mode="inline"
+                            openKeys={openKeys}
+                            onOpenChange={onOpenChange}
+                            style={{ width: 256 }}
+                            items={items2}
+                        />
                     </div>
                 </Col>
                 <Col span={12}>
-                    <div className='base-style'>
+                    <div className="base-style">
                         <Divider>可收缩菜单</Divider>
                         <div style={{ width: 256 }}>
                             <Button
-                                type='primary'
+                                type="primary"
                                 onClick={() => setCollapsed(!collapsed)}
                                 style={{ marginBottom: 16 }}>
                                 {collapsed ? <MenuFoldOutlined /> : <MenuUnfoldOutlined />}
                             </Button>
                             <Menu
-                                defaultSelectedKeys={['1']}
-                                defaultOpenKeys={['sub1']}
-                                mode='inline'
-                                theme='dark'
-                                inlineCollapsed={collapsed}>
-                                <Menu.Item key='1'>
-                                    <PieChartOutlined />
-                                    <span>Option 1</span>
-                                </Menu.Item>
-                                <Menu.Item key='2'>
-                                    <DesktopOutlined />
-                                    <span>Option 2</span>
-                                </Menu.Item>
-                                <Menu.Item key='3'>
-                                    <InboxOutlined />
-                                    <span>Option 3</span>
-                                </Menu.Item>
-                                <SubMenu
-                                    key='sub1'
-                                    title={
-                                        <span>
-                                            <MailOutlined />
-                                            <span>Navigation One</span>
-                                        </span>
-                                    }>
-                                    <Menu.Item key='5'>Option 5</Menu.Item>
-                                    <Menu.Item key='6'>Option 6</Menu.Item>
-                                    <Menu.Item key='7'>Option 7</Menu.Item>
-                                    <Menu.Item key='8'>Option 8</Menu.Item>
-                                </SubMenu>
-                                <SubMenu
-                                    key='sub2'
-                                    title={
-                                        <span>
-                                            <AppstoreOutlined />
-                                            <span>Navigation Two</span>
-                                        </span>
-                                    }>
-                                    <Menu.Item key='9'>Option 9</Menu.Item>
-                                    <Menu.Item key='10'>Option 10</Menu.Item>
-                                    <SubMenu key='sub3' title='Submenu'>
-                                        <Menu.Item key='11'>Option 11</Menu.Item>
-                                        <Menu.Item key='12'>Option 12</Menu.Item>
-                                    </SubMenu>
-                                </SubMenu>
-                            </Menu>
+                                defaultSelectedKeys={["mail"]}
+                                defaultOpenKeys={["SubMenu"]}
+                                mode="inline"
+                                theme="dark"
+                                inlineCollapsed={collapsed}
+                                items={items3}
+                            />
                         </div>
                     </div>
 
-                    <div className='base-style'>
+                    <div className="base-style">
                         <Divider>可切换动态菜单</Divider>
                         <div>
-                            <Switch onChange={val => setMode(() => (val ? 'vertical' : 'inline'))} /> Change Mode
-                            <span className='ant-divider' style={{ margin: '0 1em' }} />
-                            <Switch onChange={val => setTheme(() => (val ? 'dark' : 'light'))} /> Change Theme
+                            <Switch onChange={val => setMode(() => (val ? "vertical" : "inline"))} /> Change Mode
+                            <span className="ant-divider" style={{ margin: "0 1em" }} />
+                            <Switch onChange={val => setTheme(() => (val ? "dark" : "light"))} /> Change Theme
                             <br />
                             <br />
                             <Menu
                                 style={{ width: 256 }}
-                                defaultSelectedKeys={['1']}
-                                defaultOpenKeys={['sub1']}
+                                defaultSelectedKeys={["1"]}
+                                defaultOpenKeys={["sub1"]}
                                 mode={mode}
-                                theme={theme}>
-                                <Menu.Item key='1'>
-                                    <MailOutlined />
-                                    Navigation One
-                                </Menu.Item>
-                                <Menu.Item key='2'>
-                                    <CalendarOutlined />
-                                    Navigation Two
-                                </Menu.Item>
-                                <SubMenu
-                                    key='sub1'
-                                    title={
-                                        <span>
-                                            <AppstoreOutlined />
-                                            <span>Navigation Three</span>
-                                        </span>
-                                    }>
-                                    <Menu.Item key='3'>Option 3</Menu.Item>
-                                    <Menu.Item key='4'>Option 4</Menu.Item>
-                                    <SubMenu key='sub1-2' title='Submenu'>
-                                        <Menu.Item key='5'>Option 5</Menu.Item>
-                                        <Menu.Item key='6'>Option 6</Menu.Item>
-                                    </SubMenu>
-                                </SubMenu>
-                                <SubMenu
-                                    key='sub2'
-                                    title={
-                                        <span>
-                                            <SettingOutlined />
-                                            <span>Navigation Four</span>
-                                        </span>
-                                    }>
-                                    <Menu.Item key='7'>Option 7</Menu.Item>
-                                    <Menu.Item key='8'>Option 8</Menu.Item>
-                                    <Menu.Item key='9'>Option 9</Menu.Item>
-                                    <Menu.Item key='10'>Option 10</Menu.Item>
-                                </SubMenu>
-                            </Menu>
+                                theme={theme}
+                                items={items3}
+                            />
                         </div>
                     </div>
                 </Col>
             </Row>
         </Layout>
-    )
-}
+    );
+};
 
-export default MenuView
+export default MenuView;
