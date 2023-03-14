@@ -176,7 +176,7 @@ WebProgress.trickle = function() {
   let initial = 0, current = 0;
 
   WebProgress.promise = function($promise) {
-    if (!$promise || $promise.state() === "resolved") {
+    if (!$promise || $promise.state() === 'resolved') {
       return this;
     }
 
