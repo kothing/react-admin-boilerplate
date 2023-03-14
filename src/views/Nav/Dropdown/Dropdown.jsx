@@ -44,37 +44,37 @@ const DropdownView = () => (
         <Row gutter={8}>
             <Col span={8}>
                 <div className='base-style'>
-                    <Dropdown overlay={menu}>
+                    <Dropdown menu={menu}>
                         <Button type='link'>
                             Hover me <DownOutlined />
                         </Button>
                     </Dropdown>
                 </div>
                 <div className='base-style'>
-                    <Dropdown overlay={menu} placement='bottomLeft'>
+                    <Dropdown menu={menu} placement='bottomLeft'>
                         <Button>bottomLeft</Button>
                     </Dropdown>
-                    <Dropdown overlay={menu} placement='bottomCenter'>
-                        <Button>bottomCenter</Button>
+                    <Dropdown menu={menu} placement='bottom'>
+                        <Button>bottom</Button>
                     </Dropdown>
-                    <Dropdown overlay={menu} placement='bottomRight'>
+                    <Dropdown menu={menu} placement='bottomRight'>
                         <Button>bottomRight</Button>
                     </Dropdown>
                     <br />
-                    <Dropdown overlay={menu} placement='topLeft'>
+                    <Dropdown menu={menu} placement='topLeft'>
                         <Button>topLeft</Button>
                     </Dropdown>
-                    <Dropdown overlay={menu} placement='topCenter'>
-                        <Button>topCenter</Button>
+                    <Dropdown menu={menu} placement='top'>
+                        <Button>top</Button>
                     </Dropdown>
-                    <Dropdown overlay={menu} placement='topRight'>
+                    <Dropdown menu={menu} placement='topRight'>
                         <Button>topRight</Button>
                     </Dropdown>
                 </div>
             </Col>
             <Col span={8}>
                 <div className='base-style'>
-                    <Dropdown overlay={menu} trigger={['click']}>
+                    <Dropdown menu={menu} trigger={['click']}>
                         <Button type='link'>
                             Click me <DownOutlined />
                         </Button>
@@ -84,16 +84,16 @@ const DropdownView = () => (
             <Col span={8}>
                 <div className='base-style'>
                     <div id='components-dropdown-demo-dropdown-button'>
-                        <Dropdown.Button onClick={handleButtonClick} overlay={menu}>
+                        <Dropdown.Button onClick={handleButtonClick} menu={menu}>
                             Dropdown
                         </Dropdown.Button>
-                        <Dropdown.Button overlay={menu} icon={<UserOutlined />}>
+                        <Dropdown.Button menu={menu} icon={<UserOutlined />}>
                             Dropdown
                         </Dropdown.Button>
-                        <Dropdown.Button onClick={handleButtonClick} overlay={menu} disabled>
+                        <Dropdown.Button onClick={handleButtonClick} menu={menu} disabled>
                             Dropdown
                         </Dropdown.Button>
-                        <Dropdown overlay={menu}>
+                        <Dropdown menu={menu}>
                             <Button>
                                 Button <DownOutlined />
                             </Button>
