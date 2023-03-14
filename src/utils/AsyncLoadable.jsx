@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import loadable from "@loadable/component";
+import loadable from '@loadable/component';
 import WebProgress from '@/components/WebProgress/'
 
 const useLoadingComponent = () => {
