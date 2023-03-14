@@ -1,3 +1,3 @@
 module.exports = {
-  rules: {},
+    rules: { quotes: [1, "double"] }
 };
