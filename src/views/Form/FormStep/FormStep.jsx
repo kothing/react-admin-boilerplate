@@ -53,7 +53,7 @@ const Step1From = props => {
         <div className='step1From'>
             <Form
                 form={form}
-                hideRequiredMark
+                requiredMark
                 initialValues={{
                     user: '柯南',
                     email: 'kenan@google.com',
@@ -151,7 +151,7 @@ const Step2From = props => {
                     ) : null}
                 </Col>
             </Row>
-            <Form hideRequiredMark className='show-data' {...formItemLayout}>
+            <Form requiredMark={false} className='show-data' {...formItemLayout}>
                 <Form.Item label='接收人'>{formData.user}</Form.Item>
                 <Form.Item label='接收邮箱'>{formData.email}</Form.Item>
                 <Form.Item label='暗号'>{formData.password}</Form.Item>
@@ -204,11 +204,20 @@ const FormStep = props => {
                     <div className='base-style'>
                         <Divider orientation='left'>分步表单</Divider>
                         <div>
-                            <Steps style={{ margin: '3rem auto', maxWidth: '65rem' }} current={current}>
-                                <Step title='填写接收信息'></Step>
-                                <Step title='确认接收信息'></Step>
-                                <Step title='完成'></Step>
-                            </Steps>
+                            <Steps
+                                style={{ margin: '3rem auto', maxWidth: '65rem' }} current={current}
+                                items={[
+                                    {
+                                      title: '填写接收信息',
+                                    },
+                                    {
+                                      title: '确认接收信息',
+                                    },
+                                    {
+                                      title: '完成',
+                                    },
+                                  ]}
+                            />
                             {current === 0 && (
                                 <Step1From getFormData={val => setFormData(val)} setCurrent={val => setCurrent(val)} />
                             )}
