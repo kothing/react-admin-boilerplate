@@ -6,25 +6,37 @@ const { Header } = Layout
 
 const AppHeader = props => {
     let { menuClick, avatar, menuToggle, loginOut } = props
-    const menu = (
-        <Menu>
-            <Menu.ItemGroup title='用户设置'>
-                <Menu.Divider />
-                <Menu.Item>
-                    <EditOutlined /> 个人设置
-                </Menu.Item>
-                <Menu.Item>
-                    <SettingOutlined /> 系统设置
-                </Menu.Item>
-            </Menu.ItemGroup>
-            <Menu.Divider />
-            <Menu.Item>
-                <span onClick={loginOut}>
-                    <LogoutOutlined /> 退出登录
-                </span>
-            </Menu.Item>
-        </Menu>
-    )
+
+    const items = [
+        {
+            type: 'group',
+            label: '用户设置',
+            children: [
+                {
+                    label: '个人设置',
+                    key: 'setting1',
+                    icon: <EditOutlined />,
+                },
+                {
+                    label: '系统设置',
+                    key: 'setting2',
+                    icon: <SettingOutlined />,
+                },
+            ],
+        },
+        {
+            label: '退出登录',
+            key: 'loginOut',
+            icon: <LogoutOutlined />,
+        },
+    ];
+
+    const onClick = ({ key }) => {
+        if (key === "loginOut") {
+            loginOut();
+        }
+    };
+
     return (
         <Header className='header'>
             <div className='left'>
@@ -48,7 +60,13 @@ const AppHeader = props => {
                     </Badge>
                 </div>
                 <div>
-                    <Dropdown menu={menu} overlayStyle={{ width: '20rem' }}>
+                    <Dropdown
+                        menu={{
+                            items,
+                            onClick,
+                        }}
+                        overlayStyle={{ width: '20rem' }}
+                    >
                         <div className='ant-dropdown-link'>
                             {/* <Avatar icon='user' src={avatar} alt='avatar' style={{ cursor: 'pointer' }} /> */}
                             <Avatar src={avatar} alt='avatar' style={{ cursor: 'pointer' }} />
