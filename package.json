@@ -3,7 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
-        "@craco/craco": "6.4.3",
+        "@craco/craco": "^6.4.5",
         "animate.css": "^3.7.2",
         "antd": "^4.2.4",
         "axios": "^0.21.1",
