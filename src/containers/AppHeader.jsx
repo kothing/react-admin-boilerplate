@@ -48,7 +48,7 @@ const AppHeader = props => {
                     </Badge>
                 </div>
                 <div>
-                    <Dropdown overlay={menu} overlayStyle={{ width: '20rem' }}>
+                    <Dropdown menu={menu} overlayStyle={{ width: '20rem' }}>
                         <div className='ant-dropdown-link'>
                             {/* <Avatar icon='user' src={avatar} alt='avatar' style={{ cursor: 'pointer' }} /> */}
                             <Avatar src={avatar} alt='avatar' style={{ cursor: 'pointer' }} />
