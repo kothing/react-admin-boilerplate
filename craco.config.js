@@ -1,5 +1,5 @@
-
 const path = require('path');
+const CracoAntDesignPlugin = require("craco-antd");
 const CracoLessPlugin = require('craco-less');
 const resolve = dir => path.resolve(__dirname, dir);
 
@@ -10,6 +10,9 @@ module.exports = {
         }
     },
     plugins: [
+        {
+            plugin: CracoAntDesignPlugin
+        },
         {
           plugin: CracoLessPlugin,
           options: {
