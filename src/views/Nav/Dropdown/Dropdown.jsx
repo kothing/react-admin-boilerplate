@@ -4,25 +4,19 @@ import { DownOutlined, UserOutlined } from '@ant-design/icons'
 import WebBreadcrumb from '@/components/WebBreadcrumb'
 import '@/style/view-style/dropdown.less'
 
-const { SubMenu } = Menu
-
-const onClick = ({ key }) => {
-    message.info(`Click on item ${key}`)
-}
-
-const menu = (
-    <Menu onClick={onClick}>
-        <Menu.Item key='0'>1st menu item</Menu.Item>
-        <Menu.Item key='1'>2nd menu item</Menu.Item>
-        <Menu.Item key='2' disabled>
-            3rd menu item (disabled)
-        </Menu.Item>
-        <SubMenu title='sub menu'>
-            <Menu.Item>4rd menu item</Menu.Item>
-            <Menu.Item>5th menu item</Menu.Item>
-        </SubMenu>
-    </Menu>
-)
+const items = [
+    { key: "1", label: "1st menu item" },
+    { key: "2", label: "2nd menu item" },
+    { key: "3", label: "3rd menu item", disabled: true, },
+    {
+        label: 'sub menu',
+        key: 'submenu',
+        children: [
+            { key: "4", label: "4rd menu item" },
+            { key: "5", label: "5th menu item" },
+        ],
+    },
+];
 
 function handleButtonClick(e) {
     message.info('Click on left button.')
@@ -44,37 +38,37 @@ const DropdownView = () => (
         <Row gutter={8}>
             <Col span={8}>
                 <div className='base-style'>
-                    <Dropdown menu={menu}>
+                    <Dropdown menu={{items}}>
                         <Button type='link'>
                             Hover me <DownOutlined />
                         </Button>
                     </Dropdown>
                 </div>
                 <div className='base-style'>
-                    <Dropdown menu={menu} placement='bottomLeft'>
+                    <Dropdown menu={{items}} placement='bottomLeft'>
                         <Button>bottomLeft</Button>
                     </Dropdown>
-                    <Dropdown menu={menu} placement='bottom'>
+                    <Dropdown menu={{items}} placement='bottom'>
                         <Button>bottom</Button>
                     </Dropdown>
-                    <Dropdown menu={menu} placement='bottomRight'>
+                    <Dropdown menu={{items}} placement='bottomRight'>
                         <Button>bottomRight</Button>
                     </Dropdown>
                     <br />
-                    <Dropdown menu={menu} placement='topLeft'>
+                    <Dropdown menu={{items}} placement='topLeft'>
                         <Button>topLeft</Button>
                     </Dropdown>
-                    <Dropdown menu={menu} placement='top'>
+                    <Dropdown menu={{items}} placement='top'>
                         <Button>top</Button>
                     </Dropdown>
-                    <Dropdown menu={menu} placement='topRight'>
+                    <Dropdown menu={{items}} placement='topRight'>
                         <Button>topRight</Button>
                     </Dropdown>
                 </div>
             </Col>
             <Col span={8}>
                 <div className='base-style'>
-                    <Dropdown menu={menu} trigger={['click']}>
+                    <Dropdown menu={{items}} trigger={['click']}>
                         <Button type='link'>
                             Click me <DownOutlined />
                         </Button>
@@ -84,16 +78,16 @@ const DropdownView = () => (
             <Col span={8}>
                 <div className='base-style'>
                     <div id='components-dropdown-demo-dropdown-button'>
-                        <Dropdown.Button onClick={handleButtonClick} menu={menu}>
+                        <Dropdown.Button onClick={handleButtonClick} menu={{items}}>
                             Dropdown
                         </Dropdown.Button>
-                        <Dropdown.Button menu={menu} icon={<UserOutlined />}>
+                        <Dropdown.Button menu={{items}} icon={<UserOutlined />}>
                             Dropdown
                         </Dropdown.Button>
-                        <Dropdown.Button onClick={handleButtonClick} menu={menu} disabled>
+                        <Dropdown.Button onClick={handleButtonClick} menu={{items}} disabled>
                             Dropdown
                         </Dropdown.Button>
-                        <Dropdown menu={menu}>
+                        <Dropdown menu={{items}}>
                             <Button>
                                 Button <DownOutlined />
                             </Button>
