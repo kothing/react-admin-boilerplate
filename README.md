@@ -7,7 +7,7 @@
 * braft-editor
 * echarts
 
-Demo https://react-admin-boilerplate.now.sh/
+Demo https://react-admin-boilerplate.netlify.app
 
 React-admin-boilerplate
  screenshot
